@@ -39,7 +39,7 @@ public class AppGame extends Application {
 	// Metoda pro prepnuti na obrazovku
 	public void startGame(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/lab/gameWindow.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/cz/vsb/fei/gameWindow.fxml"));
 			Pane gameRoot = loader.load();
 
 			Scene gameScene = new Scene(gameRoot, Constant.GAME_WIDTH, Constant.GAME_HEIGHT);

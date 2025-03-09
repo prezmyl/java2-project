@@ -6,4 +6,5 @@ module cz.vsb.fei {
 
 	exports cz.vsb.fei;       //App.java main class (entry point)
 	exports cz.vsb.fei.game; //AppGame.java and game logic
+	opens cz.vsb.fei.game to javafx.fxml; // open to reflexion
 }

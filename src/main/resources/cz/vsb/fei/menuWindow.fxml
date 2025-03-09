@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.MenuController">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vsb.fei.game.MenuController">
     <children>
         <VBox alignment="CENTER" spacing="20">
             <Button text="Start Game" onAction="#startGame" prefWidth="300"/>

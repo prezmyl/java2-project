@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.canvas.Canvas?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="lab.GameController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="cz.vsb.fei.game.GameController">
     <!-- Pozadí hry -->
     <ImageView fitWidth="800" fitHeight="400" preserveRatio="false" pickOnBounds="true">
         <image>

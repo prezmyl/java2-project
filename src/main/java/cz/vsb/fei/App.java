@@ -8,7 +8,6 @@ import cz.vsb.fei.game.AppGame;
 public class App {
 	public static void main(String[] args) {
 		log.info("Launching Java application.");
-		// Spustí JavaFX aplikaci definovanou v AppGame
 		Application.launch(AppGame.class, args);
 	}
 }
