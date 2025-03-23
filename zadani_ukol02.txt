@@ -1,0 +1,23 @@
+Logging
+Použijte projekt (hru) z minulého semestru a přidejte knihovnu Log4j2. Musíte upravit pom.xml a module-info.java. Nezapomeňte přidat konfigurační soubor log4j2.xml.
+
+Nakonfigurujte logování do konzoly a do souboru.
+
+V kódu přidejte logovací zprávy alespoň ve dvou různých úrovních. Typická použití jsou:
+
+pro bloky catch se přidávají hlášky v úrovni error, warning nebo fatal a jako poslední parametr logovací metody se předává samotná exception aby byl v logu vidět stacktrace. Úroveň warning se používá pokud došlo k výjimce ale kód jí umí vyřešit nebo obejít.
+Úroveň info nebo debug se používá pro záznam, že se provedla nějaká akce nebo kus kódu, který je důležitý.
+Úroveň trace nebo debug pro detailní informace o průběhu programu a případných hodnotách proměnných. Ale pozor asi by se v logu neměli objevovat informace jako například přihlašovací jméno a heslo.
+Lombok
+Použijte projekt (hru) z minulého semestru a přidejte knihovnu Lombok. Musíte upravit pom.xml na 2 místech (dependency a maven-compiler-plugin) a module-info.java.
+
+Použijte anotace z knihovny lombok, všude kde je to možné (kde váš kód odpovídá kódu generovanému lombokem):
+
+vytvoření proměnné s loggrem
+setry a getry
+konstruktory
+...
+Builder, Equals and Hashcode, enum, switch, record
+Pokud najdete vhodné místo ve vašem projektu zkuste využít anotaci Builder z lomboku nebo také anotaci Equals and Hashcode. Pozor co je vše součástí anotace Equals and Hashcode a To String aby nedošlo k zacyklení.
+
+Pokud ještě nemáte použito a najdete vhodné místo použijte také enum a případně switch (s enumem) ideálně v jeho "lambda verzi". Obdobně na vhodném místě, pokud takové existuje, použijte record.

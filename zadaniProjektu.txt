@@ -1,0 +1,6 @@
+Semestrální projekt
+Vytvořte webovou aplikaci (back end v Javě - Spring/Quarkus) s rozhraním REST, front end v libovolné webové technologii nebo JavaFX.
+
+Využijte projekt z minulého semestru (hru) a zaměřte se na ukládání dat. Data ukládejte s využitím REST API (Možno využít Swagger/Open Api generátor). Je možno také využít projektu do jiných předmětu kde je cílem vytvořit webovou aplikaci a řešení sloužit s projektem do předmětu Java2.
+
+Aplikace bude využívat databázi prostřednictvím JPA. Budou využity minimálně 3 entity s vazbami mezi sebou. Minimálně jedna vazba bude alespoň 1:N.
