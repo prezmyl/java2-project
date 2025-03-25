@@ -1,3 +1,7 @@
 #!/bin/bash
-java --module-path target/java2-project-1.0-SNAPSHOT.jar:target/libs -m cz.vsb.fei/cz.vsb.fei.App "$@"
+# Spouštěcí skript z kořenového adresáře projektu
+
+java \
+  --module-path project-game/target/project-game-1.0-SNAPSHOT.jar:project-game/target/libs \
+  -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
 

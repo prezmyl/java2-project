@@ -1,0 +1,90 @@
+Semestrální projekt:
+Vytvořte webovou aplikaci (back end v Javě - Spring/Quarkus) s rozhraním REST, front end v libovolné webové technologii nebo JavaFX.
+
+Využijte projekt z minulého semestru (hru) a zaměřte se na ukládání dat. Data ukládejte s využitím REST API (Možno využít Swagger/Open Api generátor). Je možno také využít projektu do jiných předmětu kde je cílem vytvořit webovou aplikaci a řešení sloužit s projektem do předmětu Java2.
+
+Aplikace bude využívat databázi prostřednictvím JPA. Budou využity minimálně 3 entity s vazbami mezi sebou. Minimálně jedna vazba bude alespoň 1:N.
+
+
+
+Zadani ukol01:
+Maven - použití pluginů
+Použijte projekt (hru) z minulého semestru a přidejte do Maven projektu pluginy tak aby se vytvořil balíček JAR a adresář libs. Je potřeba využít pluginů maven-dependency-plugin a maven-jar-plugin. Inspirujte se třeba v zadání ze cvičení (https://swi.cs.vsb.cz/jezek/student-information/java2/lab01.html).
+
+Vytvořte skript run(.bat nebo .sh) pro spouštění hry.
+
+Spuštění aplikace
+Upravený příkaz pro spuštění hry:
+
+Bez modulů (není případ FX aplikace): java -jar name_of_jar_file
+S využitím modulů: java --module-path name_of_your_jar_file.jar:name_of_folder_fith_dependencies -m your_module_name/your_main_class_full_name
+S využitím modulů příklad: java --module-path project-0.0.1-SNAPSHOT.jar:libs -m cz.vsb.project/cz.vsb.App
+vložte do skriptu.
+
+JLINK
+Zkuste vytvořit jlink balík s využitím pluginu javafx-maven-plugin. Plugin maven-jlink-plugin ze cvičení nefunguje v kombinaci s knihovnami JavaFX.
+
+<plugin>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-maven-plugin</artifactId>
+    <version>0.0.8</version>
+    <executions>
+        <execution>
+            <id>create-jlink-image</id>
+            <phase>package</phase>
+            <goals>
+                <goal>jlink</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <mainClass>cz.vsb.fei.java2.jez04lab01/cz.vsb.fei.java2.jez04lab01.App --must be changed</mainClass>
+    </configuration>
+</plugin>
+Přidejte závislosti
+Přidejte závislosti pro Unit testy v Kelvinu
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>3.0</version>
+            <scope>test</scope>
+        </dependency>
+Moduly
+Použijte projekt (hru) z minulého semestru a vytvořte samostatnou knihovnu (samostatný maven projekt). Můžete postupovat jako na cvičení nebo se můžete pokusit vytvořit rodičovský maven projekt se dvěmi podprojekty. Jak je uvedeno například v https://www.baeldung.com/maven-multi-module
+
+Obsah knihovny
+do knihovny oddělte třídy zodpovědné za ukládání dat. Pokud projekt obsahoval jen základní možnosti ukládání, pokuste se rozšířit ukládaná data, obalte je do samostatných třídy aby se s nimi jednoduše pracovalo.
+
+
+
+Zadani ukol02:
+Logging
+Použijte projekt (hru) z minulého semestru a přidejte knihovnu Log4j2. Musíte upravit pom.xml a module-info.java. Nezapomeňte přidat konfigurační soubor log4j2.xml.
+
+Nakonfigurujte logování do konzoly a do souboru.
+
+V kódu přidejte logovací zprávy alespoň ve dvou různých úrovních. Typická použití jsou:
+
+pro bloky catch se přidávají hlášky v úrovni error, warning nebo fatal a jako poslední parametr logovací metody se předává samotná exception aby byl v logu vidět stacktrace. Úroveň warning se používá pokud došlo k výjimce ale kód jí umí vyřešit nebo obejít.
+Úroveň info nebo debug se používá pro záznam, že se provedla nějaká akce nebo kus kódu, který je důležitý.
+Úroveň trace nebo debug pro detailní informace o průběhu programu a případných hodnotách proměnných. Ale pozor asi by se v logu neměli objevovat informace jako například přihlašovací jméno a heslo.
+Lombok
+Použijte projekt (hru) z minulého semestru a přidejte knihovnu Lombok. Musíte upravit pom.xml na 2 místech (dependency a maven-compiler-plugin) a module-info.java.
+
+Použijte anotace z knihovny lombok, všude kde je to možné (kde váš kód odpovídá kódu generovanému lombokem):
+
+vytvoření proměnné s loggrem
+setry a getry
+konstruktory
+...
+Builder, Equals and Hashcode, enum, switch, record
+Pokud najdete vhodné místo ve vašem projektu zkuste využít anotaci Builder z lomboku nebo také anotaci Equals and Hashcode. Pozor co je vše součástí anotace Equals and Hashcode a To String aby nedošlo k zacyklení.
+
+Pokud ještě nemáte použito a najdete vhodné místo použijte také enum a případně switch (s enumem) ideálně v jeho "lambda verzi". Obdobně na vhodném místě, pokud takové existuje, použijte record.

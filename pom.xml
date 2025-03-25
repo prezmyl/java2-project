@@ -1,101 +1,81 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Základní údaje o rodičovském projektu -->
 	<groupId>cz.vsb.fei</groupId>
 	<artifactId>java2-project</artifactId>
 	<version>1.0-SNAPSHOT</version>
-
+	<packaging>pom</packaging>
 	<name>java2-project</name>
 
-	<packaging>jar</packaging>
+	<!-- Definice modulů (podprojektu) -->
+	<modules>
+		<module>project-file</module>
+		<module>project-game</module>
+	</modules>
 
 	<properties>
+		<!-- Nastavení kodovani a verze jazyka -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>21</maven.compiler.release>
+
+		<!-- Verze knihoven (Log4j, JUnit, Lombok, atd....) -->
 		<JUnit.version>5.11.0</JUnit.version>
 		<log4j.version>2.23.1</log4j.version>
 		<lombok.version>1.18.34</lombok.version>
 	</properties>
+
+	<!-- Zde definujeme verze knihoven, které budou dědit podprojekty -->
 	<dependencyManagement>
 		<dependencies>
+			<!-- JUnit Jupiter (testovavni) -->
 			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
 				<version>${JUnit.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Log4j2 (API + CORE) -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+
+			<!-- Lombok (jen v dobe kompilace) -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- JavaFX -->
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-controls</artifactId>
+				<version>23</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-fxml</artifactId>
+				<version>23</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-controls</artifactId>
-			<version>23</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-fxml</artifactId>
-			<version>23</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-graphics</artifactId>
-			<version>23</version>
-		</dependency>
-		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
-			<version>0.10.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest</artifactId>
-			<version>3.0</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>https://repo.maven.apache.org/maven2</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>openjfx-releases</id>
-			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<build>
 		<plugins>
+			<!-- Kompilátor (nastavení Lomboku jako annotation processor) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -110,24 +90,25 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+			<!-- Spouštění testů (Surefire); vypneme module path pro JUnit -->
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.5.0</version>
+				<configuration>
+					<useModulePath>false</useModulePath>
+				</configuration>
 			</plugin>
+
+			<!-- Vytvoření JAR souboru -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.4.2</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<!-- hlavni trida App -->
-							<mainClass>cz.vsb.fei.App</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
 			</plugin>
 
+			<!-- Zkopírování všech závislostí do target/libs -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -141,33 +122,12 @@
 						</goals>
 						<configuration>
 							<outputDirectory>${project.build.directory}/libs</outputDirectory>
+							<!-- Zde lze upravit např. overWriteReleases, overWriteSnapshots apod. -->
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.openjfx</groupId>
-				<artifactId>javafx-maven-plugin</artifactId>
-				<version>0.0.8</version>
-				<executions>
-					<execution>
-						<id>create-jlink-image</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jlink</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>cz.vsb.fei.App</mainClass>
-				</configuration>
-			</plugin>
-
-
-
-
 		</plugins>
 	</build>
-
 </project>
