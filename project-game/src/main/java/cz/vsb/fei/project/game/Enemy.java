@@ -4,24 +4,27 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class Enemy extends GameObject implements DrawableSimulable, Collisionable{
     private static final double ENEMY_WIDTH = 30;
     private static final double ENEMY_HEIGHT = 20;
 
     
     private long lastBulletTime = 0;
-    private final double initialX;
-    private final double initialY;
+    @Getter
     private final GameSession gameSession;
+    @Getter
+    @Setter
     private Direction direction ;
 
     private boolean active = true;
 
     public Enemy(double x, double y, GameSession gameSession) {
         super(x, y);
-        this.initialX = x;
-        this.initialY = y;
         this.speedY = 0;
         this.speedX = 100;
         this.direction = Direction.RIGHT;
@@ -105,13 +108,13 @@ public class Enemy extends GameObject implements DrawableSimulable, Collisionabl
 
 
             if (bullet.getType() == Bullet.Type.PLAYER){
-                System.out.println("Enemy hit by player bullet.");
+                log.info("Enemy hit by player bullet.");
                 gameSession.getScoreManager().increaseScore(100);
                 setActive(false);
             }
         }
         if (another instanceof Player) {
-            System.out.println("Enemy hit by player ship.");
+            log.info("Enemy hit by player ship.");
             gameSession.getScoreManager().increaseScore(50);
             setActive(false);
 
@@ -128,14 +131,7 @@ public class Enemy extends GameObject implements DrawableSimulable, Collisionabl
         this.active = active;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    public Direction getDirection(){
-        return direction;
-    }
-
+    @Override
     public double getWidth() {
         return ENEMY_WIDTH;
     }
@@ -144,7 +140,4 @@ public class Enemy extends GameObject implements DrawableSimulable, Collisionabl
         return ENEMY_HEIGHT;
     }
 
-    public GameSession getGameSession(){
-        return gameSession;
-    }
 }

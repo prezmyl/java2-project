@@ -3,6 +3,7 @@ package cz.vsb.fei.project.game;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
 
 public class DrawingThread extends AnimationTimer {
 	private final GraphicsContext gc;
-	private final ArrayList<GameObject> gameObject = new ArrayList<>();
+	@Getter
+    private final ArrayList<GameObject> gameObject = new ArrayList<>();
 	private final Player player;
 	private final GameStateObserver gameStateObserver;
 	private final ScoreManager scoreManager;
@@ -18,8 +20,10 @@ public class DrawingThread extends AnimationTimer {
 	private long lastBulletTime = 0;
 	private long lastTime;
 	private final GameSession gameSession;
-	private double deltaT = 0.016;
-	private long currentNow;
+	@Getter
+    private double deltaT = 0.016;
+	@Getter
+    private long currentNow;
 
 	private long lastSecond = 0;
 	private int frameCount = 0;
@@ -45,17 +49,6 @@ public class DrawingThread extends AnimationTimer {
 		deltaT = (now - lastTime) / 1e9;
 		lastTime = now;
 		gameSession.updateGameTime(deltaT);
-	/*	System.out.println("deltaT: " + deltaT);
-
-		// Počet snímků za sekundu
-		long currentSecond = now / 1_000_000_000;
-		if (lastSecond == currentSecond) {
-			frameCount++;
-		} else {
-			System.out.println("FPS: " + frameCount);
-			frameCount = 0;
-			lastSecond = currentSecond;
-		}*/
 
 		if (gameSession.getPlayer().getHealth().getLives() <= 0 || gameSession.checkEnemyReachedGround()) {
 			stop();
@@ -68,16 +61,9 @@ public class DrawingThread extends AnimationTimer {
 		}
 
 		gameSession.enemyShoot(now);
-
 		gc.clearRect(0, 0, Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
-
-
 		gameSession.removeInactiveObjects();
-
-
 		checkCollisions();
-
-
 
 		// Vykreslení a simulace DrawableSimulable
 		gameSession.getDrawableSimulables().forEach(obj -> {
@@ -92,8 +78,6 @@ public class DrawingThread extends AnimationTimer {
 		gameStateObserver.onLivesUpdate(player.getHealth().getLives());
 
 		gameSession.attemptSpawn();
-
-
 
 	}
 
@@ -114,18 +98,4 @@ public class DrawingThread extends AnimationTimer {
 		}
 	}
 
-
-
-
-	public void addBullet(Bullet bullet) {
-		gameObject.add(bullet);
-	}
-
-	public double getDeltaT(){
-		return deltaT;
-	}
-
-	public long getCurrentNow() {
-		return currentNow;
-	}
 }

@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class AppGame extends Application {
 
 	private DrawingThread drawingThread;
@@ -32,7 +34,7 @@ public class AppGame extends Application {
 			primaryStage.setTitle("Space Invaders - Menu");
 			primaryStage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Error during start of application.", e);
 		}
 	}
 
@@ -63,7 +65,7 @@ public class AppGame extends Application {
 			drawingThread.start();		
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Error during start of a game.", e);
 		}
 	}
 

@@ -1,23 +1,34 @@
 package cz.vsb.fei.project.game;
 
 import javafx.scene.Scene;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+@Log4j2
 public class GameSession {
+    @Getter
     private final Player player;
+    @Getter
     private final ScoreManager scoreManager;
+    @Getter
     private final List<Enemy> enemies;
+    @Getter
     private final List<Barricade> barricades;
+    @Getter
     private final List<Bullet> bullets;
+    @Getter
     private final Scene scene;
+    @Getter
     private final Ground ground;
     private long lastEnemyShotTime = 0;
     private final double SHOOT_PROBABILITY = 0.3; // 30% probabilty for shooting
 
+    @Getter
     private double gameTime = 0; // Celkový herní čas, nevyuzito
 
 
@@ -41,7 +52,7 @@ public class GameSession {
         bullets.removeIf(bullet -> !bullet.isActive());
         int after = bullets.size();
         if (before != after) {
-            System.out.println("Odstraněno " + (before - after) + " střel.");
+            log.debug("Odstraněno {}{}" ,(before - after), " střel.");
         }
         enemies.removeIf(enemy -> !enemy.isActive());
         barricades.removeIf(barricade -> !barricade.isActive());
@@ -59,16 +70,20 @@ public class GameSession {
         return enemies.isEmpty();
     }
 
+    // Uziti swith(ENUM), -> lambda
     public void updateAllEnemiesDirection(Direction direction) {
-        Direction newDirection;
-        if(direction == Direction.RIGHT) {
-            newDirection = Direction.LEFT;
-        }
-        else {
-            newDirection = Direction.RIGHT;
-        }
+        Direction newDirection = switch (direction){
+            case LEFT -> Direction.RIGHT;
+            case RIGHT -> Direction.LEFT;
+            case UP -> Direction.UP;
+            case DOWN -> Direction.DOWN;
+            default -> {
+                log.error("Unexpected direction: {}", direction);
+                throw new IllegalStateException("Unexpected value: " + direction);
+            }
+        };
 
-
+        // this logic does not drive ufo
         for (Enemy enemy : enemies) {
             if (!(enemy instanceof Ufo)) {
                 enemy.setDirection(newDirection);
@@ -157,7 +172,7 @@ public class GameSession {
             return;
         }
 
-        System.out.println("Attempting to spawn UFO...");
+        log.info("Attempting to spawn UFO...");
         Random random = new Random();
         if (random.nextDouble() < 0.001) {
             boolean movingRight = random.nextBoolean();
@@ -172,19 +187,6 @@ public class GameSession {
 
     public boolean hasActiveUfo() {
         return enemies.stream().anyMatch(enemy -> enemy instanceof Ufo);
-    }
-
-
-    public List<Bullet> getBullets() {
-        return bullets;
-    }
-
-    public List<Enemy> getEnemies() {
-        return enemies;
-    }
-
-    public List<Barricade> getBarricades() {
-        return barricades;
     }
 
 
@@ -208,22 +210,6 @@ public class GameSession {
         );
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public ScoreManager getScoreManager() {
-        return scoreManager;
-    }
-
-    public Scene getScene() {
-        return scene;
-    }
-
-    public Ground getGround() {
-        return ground;
-    }
-
     public Stream<Enemy> streamEnemies() {
         return enemies.stream();
     }
@@ -231,10 +217,6 @@ public class GameSession {
 
     public Stream<Barricade> streamBarricades() {
         return barricades.stream();
-    }
-
-    public double getGameTime() {
-        return gameTime;
     }
 
 

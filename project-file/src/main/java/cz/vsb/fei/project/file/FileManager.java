@@ -1,10 +1,12 @@
 package cz.vsb.fei.project.file;
 
+import lombok.extern.log4j.Log4j2;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Log4j2
 public class FileManager {
     private static final String FILE_PATH = "high_scores.txt";
 
@@ -18,7 +20,7 @@ public class FileManager {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                System.err.println("Error creating scores file: " + e.getMessage());
+                log.error("Error creating scores file: {}", e.getMessage(), e);
             }
         }
     }
@@ -35,15 +37,15 @@ public class FileManager {
                         if (score >= 0) { // Povolení nulového skóre
                             scores.add(score);
                         } else {
-                            System.err.println("Ignoring negative score: " + line);
+                            log.warn("Ignoring negative score: {}", line);
                         }
                     } catch (NumberFormatException e) {
-                        System.err.println("Invalid score in file: " + line);
+                        log.error("Invalid score in file: {}", line, e);
                     }
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading scores file: " + e.getMessage());
+            log.error("Error reading scores file: {}",e.getMessage(), e);
         }
         Collections.sort(scores, Collections.reverseOrder());
         return scores;
@@ -59,7 +61,7 @@ public class FileManager {
                 writer.write(scores.get(i) + "\n");
             }
         } catch (IOException e) {
-            System.err.println("Error writing scores file: " + e.getMessage());
+            log.error("Error writing scores file: ", e.getMessage(), e);
         }
     }
 }

@@ -3,9 +3,11 @@ package cz.vsb.fei.project.game;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.Random;
 
+@Log4j2
 public class Ufo extends Enemy {
     private static final double UFO_WIDTH = 50;
     private static final double UFO_HEIGHT = 20;
@@ -67,7 +69,7 @@ public class Ufo extends Enemy {
     @Override
     public void shoot(long now) {
         Bullet bullet = new Bullet(position.getX() + UFO_WIDTH / 2, position.getY() + UFO_HEIGHT, Bullet.Type.ENEMY);
-        System.out.println("UFO vystřelilo střelu na pozici: " + bullet.getPosition());
+        log.debug("UFO vystřelilo střelu na pozici: {}", bullet.getPosition());
         gameSession.addBullet(bullet);
     }
 
@@ -81,7 +83,7 @@ public class Ufo extends Enemy {
     public void hitBy(Collisionable another) {
         if (another instanceof Bullet bullet) {
             if (bullet.getType() == Bullet.Type.PLAYER){
-                System.out.println("UFO hit by player bullet.");
+                log.debug("UFO hit by player bullet.");
                 gameSession.getScoreManager().increaseScore(300); // Přidání bodů za zničení UFO
                 setActive(false);
             }

@@ -3,11 +3,15 @@ package cz.vsb.fei.project.game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import cz.vsb.fei.project.file.FileManager;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
 
 import java.util.List;
 
+@Log4j2
 public class ScoreManager {
+    @Getter
     private int score;
     private GraphicsContext gc;
     private final FileManager fileManager;
@@ -17,13 +21,9 @@ public class ScoreManager {
         this.fileManager = new FileManager();
     }
 
-    public int getScore() {
-        return score;
-    }
-
     public void increaseScore(int points) {
         score += points;
-        System.out.println("Increasing Score");
+        log.info("Increasing Score");
     }
 
     public void resetScore() {

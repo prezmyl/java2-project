@@ -1,5 +1,6 @@
 package cz.vsb.fei.project.game;
 
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -8,9 +9,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
 
+@Log4j2
 public class GameController implements GameStateObserver {
 
     @FXML
@@ -61,31 +64,32 @@ public class GameController implements GameStateObserver {
     }
 
     public void initialize() {
-        System.out.println("GameController initialized.");
+        log.info("GameController initialized.");
     }
 
     @FXML
     protected void handleKeyPress(KeyEvent keyEvent) {
-        System.out.println("Key pressed: " + keyEvent.getCode()); // Výpis klávesy
+        log.debug("Key pressed: {}", keyEvent.getCode()); // Výpis klávesy
         Runnable action = keyAction.get(keyEvent.getCode());
         if (action != null) {
-            System.out.println("Action triggered for: " + keyEvent.getCode());
+            log.debug("Action triggered for: {}", keyEvent.getCode());
             action.run();
         } else {
-            System.out.println("No action mapped for: " + keyEvent.getCode());
+            log.debug("No action mapped for: {}", keyEvent.getCode());
         }
     }
 
     private void handleContinuousInput() {
-      //  System.out.println("Running handleContinuousInput | Active keys: " + activeKeys);
         for (KeyCode key : activeKeys) {
             Runnable action = keyAction.get(key);
             if (action != null) {
-              //  System.out.println("Executing action for: " + key);
+                log.debug("Executing action for: {}", key);
                 action.run();
             }
         }
     }
+
+
 
 
     @Override
@@ -142,7 +146,7 @@ public class GameController implements GameStateObserver {
     @FXML
     public void handleHighScoresButton() {
         displayHighScores();
-        System.out.println("High Scores button clicked");
+        log.info("High Scores button clicked");
         requestFocusToCanvas();
 
 
@@ -151,7 +155,7 @@ public class GameController implements GameStateObserver {
     @FXML
     public void handleSaveScoreButton() {
         saveCurrentScore();
-        System.out.println("Save Score button clicked");
+        log.info("Save Score button clicked");
         requestFocusToCanvas();
     }
 

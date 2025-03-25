@@ -4,13 +4,17 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class Bullet extends GameObject implements DrawableSimulable, Collisionable {
     public enum Type {PLAYER, ENEMY}
     protected static final double BULLET_WIDTH = 5;
     protected static final double BULLET_HEIGHT = 10;
     private boolean active = true;
 
+    @Getter
     private final Type type;
 
     public Bullet(double x, double y, Type type) {
@@ -19,16 +23,12 @@ public class Bullet extends GameObject implements DrawableSimulable, Collisionab
         this.type = type;
     }
 
-    public Type getType() {
-        return type;
-    }
-
     @Override
     public void simulate(double deltaT) {
         position = new Point2D(position.getX(), position.getY() + speedY * deltaT);
         if (position.getY() < 0 || position.getY() > Constant.GAME_HEIGHT) {
             setActive(false);
-            System.out.println("Bullet removed: " + position);
+            log.debug("Bullet removed: {}", position);
         }
     }
 
@@ -72,6 +72,7 @@ public class Bullet extends GameObject implements DrawableSimulable, Collisionab
         this.active = active;
     }
 
+    @Override
     public double getWidth() {
         return BULLET_WIDTH;
     }

@@ -3,13 +3,17 @@ package cz.vsb.fei.project.game;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import lombok.Getter;
 
 public class Barricade extends GameObject implements DrawAble, Collisionable{
 
+    @Getter
     private static final double BARRICADE_WIDTH = 50;
+    @Getter
     private static final double BARRICADE_HEIGHT = 15;
     private static final int MAX_HEALTH = 3;
 
+    @Getter
     private int health;
     private boolean active = true;
 
@@ -21,7 +25,7 @@ public class Barricade extends GameObject implements DrawAble, Collisionable{
 
     @Override
     public void draw(GraphicsContext gc) {
-        //gc.setFill(Color.GRAY);
+
         switch (health) {
             case 3 -> gc.setFill(Color.GRAY); // Plně nepoškozená
             case 2 -> gc.setFill(Color.DARKGRAY); // Poškozená
@@ -31,14 +35,6 @@ public class Barricade extends GameObject implements DrawAble, Collisionable{
             }
         }
         gc.fillRect(position.getX(), position.getY(), BARRICADE_WIDTH, BARRICADE_HEIGHT);
-    }
-
-    public double getWidth() {
-        return BARRICADE_WIDTH;
-    }
-
-    public double getHeight() {
-        return BARRICADE_HEIGHT;
     }
 
     @Override
@@ -71,10 +67,6 @@ public class Barricade extends GameObject implements DrawAble, Collisionable{
     @Override
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public int getHealth() {
-        return health;
     }
 
 }

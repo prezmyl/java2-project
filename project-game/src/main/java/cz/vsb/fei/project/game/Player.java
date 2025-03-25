@@ -4,12 +4,16 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class Player extends GameObject implements DrawableSimulable, Collisionable {
 
     private static final double PLAYER_WIDTH = 40;
     private static final double PLAYER_HEIGHT = 20;
     private long lastBulletTime = 0;
+    @Getter
     private Health health;
     private boolean active = true;
 
@@ -21,13 +25,7 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
 
     @Override
     public void simulate(double deltaT){
-       /* if (position.getX() + speedX < Constant.GAME_WIDTH - PLAYER_WIDTH && position.getX() + speedX > 0) {
-            position = new Point2D(position.getX() + speedX, position.getY());
-        }
-        else{
-            this.speedX = -1 * speedX;
-        }*/
-
+        //being control by a user
     }
 
     @Override
@@ -50,9 +48,7 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
         }
     }
 
-    /*public void shoot(){
-        Bullet bullet = new Bullet(position.getX() + getWidth() / 2, position.getY() - Bullet.BULLET_HEIGHT);
-    }*/
+
     public void shoot(GameSession gameSession, long now) {
         if (now - lastBulletTime > Constant.BULLET_INTERVAL) {
             Bullet bullet = new Bullet(
@@ -62,7 +58,7 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
             );
             gameSession.addBullet(bullet); // Přidání střely do GameSession
             lastBulletTime = now;
-            System.out.println("Player shooting at: " + position);
+            log.info("Player shooting at: {}", position);
         }
     }
 
@@ -79,12 +75,12 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
 
     @Override
     public void hitBy(Collisionable another) {
-        System.out.println("Player hit by: " + another.getClass().getSimpleName());
+        log.info("Player hit by: {}", another.getClass().getSimpleName());
         if (another instanceof Enemy || another instanceof Bullet) {
             this.getHealth().decreaseLives();
             if (this.getHealth().getLives() <= 0) {
                 setActive(false);
-                System.out.println("Player is no longer active.");
+                log.warn("Player is no longer active.");
             }
         }
     }
@@ -99,10 +95,7 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
         this.active = active;
     }
 
-    public Health getHealth(){
-        return health;
-    }
-
+    @Override
     public double getWidth() {
         return PLAYER_WIDTH;
     }
@@ -126,7 +119,7 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
         public void decreaseLives() {
             if (lives > 0){
                 lives--;
-                System.out.println("Deacresing lives");
+                log.debug("Deacresing lives");
             }
         }
 
