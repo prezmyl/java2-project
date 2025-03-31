@@ -136,6 +136,7 @@ public class Enemy extends GameObject implements DrawableSimulable, Collisionabl
         return ENEMY_WIDTH;
     }
 
+    @Override
     public double getHeight() {
         return ENEMY_HEIGHT;
     }

@@ -88,3 +88,123 @@ Builder, Equals and Hashcode, enum, switch, record
 Pokud najdete vhodné místo ve vašem projektu zkuste využít anotaci Builder z lomboku nebo také anotaci Equals and Hashcode. Pozor co je vše součástí anotace Equals and Hashcode a To String aby nedošlo k zacyklení.
 
 Pokud ještě nemáte použito a najdete vhodné místo použijte také enum a případně switch (s enumem) ideálně v jeho "lambda verzi". Obdobně na vhodném místě, pokud takové existuje, použijte record.
+
+
+
+Zadani ukol03:
+Java Persistent Api
+Upravte projekt tak aby se nějaká data (alespoň dvě třídy) napříklkad skóre a nastavení nebo hráč ukládalo do databáze pomocí JPA. Ukládejte takové třídy aby alespoň mezi dvěma třídami byla vazba 1:N.
+
+Závislosti
+Pro využití JPA musíme přidat závislosti na knihovny jakarta.persistence-api verze 3.2.0 a hibernate-core verze 6.6.11.Final
+
+Module info
+Projekt bude potřebovat využít moduly jakarta.persistence a org.hibernate.orm.core.
+
+Taky je nutno balík lab.data otevřít všem ne jen balíku javafx.base aby si jej Hibernate mohl pomocí reflexe zpracovat.
+
+Konfigurace JPA
+Do složky src/main/resources/META-INF přidejte soubor persistence.xml ten je hlavním konfiguračním souborem pro JPA.
+
+Obsah souboru je uveden níže a můžete tam najít jméno perzistentní jednotky (to budete využívat ve zdrojových kódech), nastavení připojení na databázi a nastavení samotného Hibernetu, třeba to, že se má pokusit vytvořit databázové schéma podle entitních tříd.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+    xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        https://jakarta.ee/xml/ns/persistence
+        https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <persistence-unit name="java2"
+        transaction-type="RESOURCE_LOCAL">
+
+        <!-- If you are running in a production environment, add a managed data 
+            source, this example data source is just for development and testing! -->
+        <properties>
+            <property name="jakarta.persistence.jdbc.url"
+                value="jdbc:h2:file:./db/java2" />
+            <!-- In memory DB no store to disk
+                <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:java2" />
+            -->
+            <property name="jakarta.persistence.jdbc.driver"
+                value="org.h2.Driver" />
+
+
+            <property name="jakarta.persistence.jdbc.user" value="app" />
+            <property name="jakarta.persistence.jdbc.password"
+                value="app" />
+            <property
+                name="jakarta.persistence.schema-generation.database.action"
+                value="create"></property>
+
+            <!-- Properties for Hibernate -->
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="true" />
+            <!--
+                <property name="hibernate.hbm2ddl.auto" value="update" />
+            -->
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
+JPA Hibernate Model Gen
+Pomocí mavenu přidejt knihovnu hibernate-jpamodelgen, která umožní automatické vygenerování popisných třít pro JPA entity.
+
+Závislost do pom.xml
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <scope>provided</scope>
+            <version>6.6.11.Final</version>
+        </dependency>
+Nutno přidat k pluginu maven-compiler-plugin jako annotation processor hned za lombok.
+                        <path>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-jpamodelgen</artifactId>
+                            <version>6.6.11.Final</version>
+                        </path>
+Dále rovněž do pluginu maven-compiler-plugin hned za konec </configuration> spouštění ve fázi generate-sources
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+Vygenerované zdorojové kódy ve složce target/generated-sources/annotations musíme přidat k projektovým souborům pomocí pluginu build-helper-maven-plugin:
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <sources>
+                        <source>target/generated-sources/annotations</source>
+                    </sources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+Do module.info.java nutno přidat závislost na modulu pro anotace ve vygenerovaných třídách:
+
+requires static jakarta.annotation;
+Entitní třídy
+Entitní třídu upravte tak aby byla platnou entitní třídou:
+
+Přidejte anotaci pro entitní třídy
+Přidejte anotaci pro id a anotaci pro automatické generování id
+Přidejte konstruktor bez parametrů
+Entity a vazby
+Vazby mezi entitami realizujete jako "referenci" instanční proměnnou mezi entitními třídami.
+
+Nezapomeňte na anotace pro konstruktor bez parametrů
+Anotace pro vazby OneToMany a ManyToOne a na parametr mappedBy
+Zajistěte aby se kolekce nevypisovaly jako soužást metody toString
+Zajestěte aby se pro hashcode a equals používalo pouze id.

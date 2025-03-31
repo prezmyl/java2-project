@@ -20,7 +20,7 @@ public class Player extends GameObject implements DrawableSimulable, Collisionab
     public Player(double x, double y) {
         super(x, y);
         this.speedX = 100;
-        this.health = new Health(Constant.MAX_HEALTH);
+        this.health = new Health(GameSettings.getInstance().getMaxHealth());
     }
 
     @Override

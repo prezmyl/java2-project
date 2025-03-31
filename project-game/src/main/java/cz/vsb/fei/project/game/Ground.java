@@ -6,13 +6,13 @@ import javafx.scene.paint.Color;
 
 
 public class Ground extends GameObject implements DrawAble, Collisionable {
-    private final int WIDTH = Constant.GAME_WIDTH;
+    private final int WIDTH = GameSettings.getInstance().getGameWidth();
     private final int HEIGHT = 10;
     private boolean active = true;
 
 
     public Ground() {
-        super(0, Constant.GAME_HEIGHT - 10);
+        super(0, GameSettings.getInstance().getGameHeight() - 10);
         this.active = true;
     }
 

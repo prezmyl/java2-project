@@ -15,6 +15,7 @@
 	<modules>
 		<module>project-file</module>
 		<module>project-game</module>
+		<module>project-data</module>
 	</modules>
 
 	<properties>

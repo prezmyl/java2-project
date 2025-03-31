@@ -1,6 +1,32 @@
 .
+├── high_scores.txt
+├── logs
+│   └── app.log
 ├── myProjectStructure.txt
 ├── pom.xml
+├── project-data
+│   ├── pom.xml
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   ├── cz
+│       │   │   │   └── vsb
+│       │   │   │       └── fei
+│       │   │   │           └── project
+│       │   │   │               └── data
+│       │   │   │                   └── Score.java
+│       │   │   └── module-info.java
+│       │   └── resources
+│       │       ├── cz
+│       │       │   └── vsb
+│       │       │       └── fei
+│       │       └── log4j2.xml
+│       └── test
+│           └── java
+│               └── cz
+│                   └── vsb
+│                       └── fei
+│                           └── AppTest.java
 ├── project-file
 │   ├── pom.xml
 │   ├── src
@@ -11,15 +37,17 @@
 │   │   │   │   │       └── fei
 │   │   │   │   │           └── project
 │   │   │   │   │               └── file
-│   │   │   │   │                   └── FileManager.java
+│   │   │   │   │                   ├── DbConnector.java
+│   │   │   │   │                   ├── FileManager.java
+│   │   │   │   │                   ├── ScoreStorageFactory.java
+│   │   │   │   │                   └── ScoreStorageInterface.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
-│   │   │       ├── cz
-│   │   │       │   └── vsb
-│   │   │       │       └── fei
-│   │   │       │           └── project
-│   │   │       │               └── file
-│   │   │       └── log4j2.xml
+│   │   │       └── cz
+│   │   │           └── vsb
+│   │   │               └── fei
+│   │   │                   └── project
+│   │   │                       └── file
 │   │   └── test
 │   │       └── java
 │   │           └── cz
@@ -36,7 +64,6 @@
 │       │   │           └── project
 │       │   │               └── file
 │       │   │                   └── FileManager.class
-│       │   ├── log4j2.xml
 │       │   └── module-info.class
 │       ├── generated-sources
 │       │   └── annotations
@@ -71,14 +98,12 @@
 │       │   ├── cz.vsb.fei.project.file.AppTest.txt
 │       │   └── TEST-cz.vsb.fei.project.file.AppTest.xml
 │       └── test-classes
-│           ├── cz
-│           │   └── vsb
-│           │       └── fei
-│           │           └── project
-│           │               └── file
-│           │                   └── AppTest.class
-│           └── META-INF
-│               └── jpms.args
+│           └── cz
+│               └── vsb
+│                   └── fei
+│                       └── project
+│                           └── file
+│                               └── AppTest.class
 ├── project-game
 │   ├── pom.xml
 │   ├── src
@@ -102,6 +127,7 @@
 │   │   │   │   │                   ├── GameController.java
 │   │   │   │   │                   ├── GameObject.java
 │   │   │   │   │                   ├── GameSession.java
+│   │   │   │   │                   ├── GameSettings.java
 │   │   │   │   │                   ├── GameStateObserver.java
 │   │   │   │   │                   ├── Ground.java
 │   │   │   │   │                   ├── HealthDisplay.java
@@ -153,7 +179,10 @@
 │       │   │                   ├── GameController$1.class
 │       │   │                   ├── GameController.class
 │       │   │                   ├── GameObject.class
+│       │   │                   ├── GameSession$1.class
 │       │   │                   ├── GameSession.class
+│       │   │                   ├── GameSettings$GameSettingsBuilder.class
+│       │   │                   ├── GameSettings.class
 │       │   │                   ├── GameStateObserver.class
 │       │   │                   ├── gameWindow.fxml
 │       │   │                   ├── Ground.class
@@ -209,16 +238,14 @@
 │       │   ├── cz.vsb.fei.project.game.AppTest.txt
 │       │   └── TEST-cz.vsb.fei.project.game.AppTest.xml
 │       └── test-classes
-│           ├── cz
-│           │   └── vsb
-│           │       └── fei
-│           │           └── project
-│           │               └── game
-│           │                   └── AppTest.class
-│           └── META-INF
-│               └── jpms.args
-├── zadaniProjektu.txt
-├── zadani_ukol01.txt
-└── zadani_ukol02.txt
+│           └── cz
+│               └── vsb
+│                   └── fei
+│                       └── project
+│                           └── game
+│                               └── AppTest.class
+├── run.sh
+├── structure_exports
+└── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-99 directories, 123 files
+117 directories, 132 files

@@ -44,12 +44,13 @@ public class AppGame extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/cz/vsb/fei/project/game/gameWindow.fxml"));
 			Pane gameRoot = loader.load();
 
-			Scene gameScene = new Scene(gameRoot, Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
+
+			Scene gameScene = new Scene(gameRoot, GameSettings.getInstance().getGameWidth(), GameSettings.getInstance().getGameHeight());
 			gameSession = new GameSession(gameScene);
 
 			GameController gameController = loader.getController();
 
-			Canvas canvas = new Canvas(Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
+			Canvas canvas = new Canvas(GameSettings.getInstance().getGameWidth(), GameSettings.getInstance().getGameHeight());
 			gameRoot.getChildren().add(1, canvas);
 			canvas.setFocusTraversable(false);
 

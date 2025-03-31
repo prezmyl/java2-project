@@ -34,7 +34,7 @@ public class GameSession {
 
     public GameSession(Scene scene) {
         this.scene = scene;
-        this.player = new Player(Constant.PLAYER_START.getX(), Constant.PLAYER_START.getY());
+        this.player = new Player(GameSettings.getInstance().getPlayerStartX(), GameSettings.getInstance().getPlayerStartY());
         this.enemies = new ArrayList<>();
         this.barricades = new ArrayList<>();
         this.bullets = new ArrayList<>();
