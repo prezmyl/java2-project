@@ -6,31 +6,6 @@
 ├── pom.xml
 ├── project-data
 │   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   ├── cz
-│       │   │   │   └── vsb
-│       │   │   │       └── fei
-│       │   │   │           └── project
-│       │   │   │               └── data
-│       │   │   │                   └── Score.java
-│       │   │   └── module-info.java
-│       │   └── resources
-│       │       ├── cz
-│       │       │   └── vsb
-│       │       │       └── fei
-│       │       └── log4j2.xml
-│       └── test
-│           └── java
-│               └── cz
-│                   └── vsb
-│                       └── fei
-│                           └── project
-│                               └── data
-│                                   └── AppTest.java
-├── project-file
-│   ├── pom.xml
 │   ├── src
 │   │   ├── main
 │   │   │   ├── java
@@ -38,25 +13,21 @@
 │   │   │   │   │   └── vsb
 │   │   │   │   │       └── fei
 │   │   │   │   │           └── project
-│   │   │   │   │               └── file
-│   │   │   │   │                   ├── DbConnector.java
-│   │   │   │   │                   ├── FileManager.java
-│   │   │   │   │                   ├── ScoreStorageFactory.java
-│   │   │   │   │                   └── ScoreStorageInterface.java
+│   │   │   │   │               └── data
+│   │   │   │   │                   └── Score.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
-│   │   │       └── cz
-│   │   │           └── vsb
-│   │   │               └── fei
-│   │   │                   └── project
-│   │   │                       └── file
+│   │   │       ├── cz
+│   │   │       │   └── vsb
+│   │   │       │       └── fei
+│   │   │       └── log4j2.xml
 │   │   └── test
 │   │       └── java
 │   │           └── cz
 │   │               └── vsb
 │   │                   └── fei
 │   │                       └── project
-│   │                           └── file
+│   │                           └── data
 │   │                               └── AppTest.java
 │   └── target
 │       ├── classes
@@ -64,8 +35,9 @@
 │       │   │   └── vsb
 │       │   │       └── fei
 │       │   │           └── project
-│       │   │               └── file
-│       │   │                   └── FileManager.class
+│       │   │               └── data
+│       │   │                   └── Score.class
+│       │   ├── log4j2.xml
 │       │   └── module-info.class
 │       ├── generated-sources
 │       │   └── annotations
@@ -95,17 +67,17 @@
 │       │           └── default-testCompile
 │       │               ├── createdFiles.lst
 │       │               └── inputFiles.lst
-│       ├── project-file-1.0-SNAPSHOT.jar
+│       ├── project-data-1.0-SNAPSHOT.jar
 │       ├── surefire-reports
-│       │   ├── cz.vsb.fei.project.file.AppTest.txt
-│       │   └── TEST-cz.vsb.fei.project.file.AppTest.xml
+│       │   ├── cz.vsb.fei.AppTest.txt
+│       │   └── TEST-cz.vsb.fei.AppTest.xml
 │       └── test-classes
-│           └── cz
-│               └── vsb
-│                   └── fei
-│                       └── project
-│                           └── file
-│                               └── AppTest.class
+│           ├── cz
+│           │   └── vsb
+│           │       └── fei
+│           │           └── AppTest.class
+│           └── META-INF
+│               └── jpms.args
 ├── project-game
 │   ├── pom.xml
 │   ├── src
@@ -204,6 +176,7 @@
 │       │   └── test-annotations
 │       ├── libs
 │       │   ├── apiguardian-api-1.1.2.jar
+│       │   ├── h2-2.2.224.jar
 │       │   ├── javafx-base-23.jar
 │       │   ├── javafx-base-23-linux.jar
 │       │   ├── javafx-controls-23.jar
@@ -222,7 +195,8 @@
 │       │   ├── log4j-core-2.23.1.jar
 │       │   ├── lombok-1.18.34.jar
 │       │   ├── opentest4j-1.3.0.jar
-│       │   └── project-file-1.0-SNAPSHOT.jar
+│       │   ├── project-data-1.0-SNAPSHOT.jar
+│       │   └── project-storage-1.0-SNAPSHOT.jar
 │       ├── maven-archiver
 │       │   └── pom.properties
 │       ├── maven-status
@@ -240,14 +214,100 @@
 │       │   ├── cz.vsb.fei.project.game.AppTest.txt
 │       │   └── TEST-cz.vsb.fei.project.game.AppTest.xml
 │       └── test-classes
-│           └── cz
-│               └── vsb
-│                   └── fei
-│                       └── project
-│                           └── game
-│                               └── AppTest.class
+│           ├── cz
+│           │   └── vsb
+│           │       └── fei
+│           │           └── project
+│           │               └── game
+│           │                   └── AppTest.class
+│           └── META-INF
+│               └── jpms.args
+├── project-storage
+│   ├── pom.xml
+│   ├── src
+│   │   ├── main
+│   │   │   ├── java
+│   │   │   │   ├── cz
+│   │   │   │   │   └── vsb
+│   │   │   │   │       └── fei
+│   │   │   │   │           └── project
+│   │   │   │   │               └── storage
+│   │   │   │   │                   ├── DbConnector.java
+│   │   │   │   │                   ├── FileManager.java
+│   │   │   │   │                   ├── ScoreStorageFactory.java
+│   │   │   │   │                   └── ScoreStorageInterface.java
+│   │   │   │   └── module-info.java
+│   │   │   └── resources
+│   │   │       └── cz
+│   │   │           └── vsb
+│   │   │               └── fei
+│   │   │                   └── project
+│   │   │                       └── storage
+│   │   └── test
+│   │       └── java
+│   │           └── cz
+│   │               └── vsb
+│   │                   └── fei
+│   │                       └── project
+│   │                           └── file
+│   │                               └── AppTest.java
+│   └── target
+│       ├── classes
+│       │   ├── cz
+│       │   │   └── vsb
+│       │   │       └── fei
+│       │   │           └── project
+│       │   │               └── storage
+│       │   │                   ├── DbConnector.class
+│       │   │                   ├── FileManager.class
+│       │   │                   ├── ScoreStorageFactory.class
+│       │   │                   └── ScoreStorageInterface.class
+│       │   └── module-info.class
+│       ├── generated-sources
+│       │   └── annotations
+│       ├── generated-test-sources
+│       │   └── test-annotations
+│       ├── libs
+│       │   ├── apiguardian-api-1.1.2.jar
+│       │   ├── h2-2.2.224.jar
+│       │   ├── junit-jupiter-5.11.0.jar
+│       │   ├── junit-jupiter-api-5.11.0.jar
+│       │   ├── junit-jupiter-engine-5.11.0.jar
+│       │   ├── junit-jupiter-params-5.11.0.jar
+│       │   ├── junit-platform-commons-1.11.0.jar
+│       │   ├── junit-platform-engine-1.11.0.jar
+│       │   ├── log4j-api-2.23.1.jar
+│       │   ├── log4j-core-2.23.1.jar
+│       │   ├── lombok-1.18.34.jar
+│       │   ├── opentest4j-1.3.0.jar
+│       │   └── project-data-1.0-SNAPSHOT.jar
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── maven-status
+│       │   └── maven-compiler-plugin
+│       │       ├── compile
+│       │       │   └── default-compile
+│       │       │       ├── createdFiles.lst
+│       │       │       └── inputFiles.lst
+│       │       └── testCompile
+│       │           └── default-testCompile
+│       │               ├── createdFiles.lst
+│       │               └── inputFiles.lst
+│       ├── project-storage-1.0-SNAPSHOT.jar
+│       ├── surefire-reports
+│       │   ├── cz.vsb.fei.project.file.AppTest.txt
+│       │   └── TEST-cz.vsb.fei.project.file.AppTest.xml
+│       └── test-classes
+│           ├── cz
+│           │   └── vsb
+│           │       └── fei
+│           │           └── project
+│           │               └── file
+│           │                   └── AppTest.class
+│           └── META-INF
+│               └── jpms.args
 ├── run.sh
 ├── structure_exports
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-119 directories, 132 files
+146 directories, 165 files
