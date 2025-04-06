@@ -54,8 +54,8 @@ public class DbConnector implements ScoreStorageInterface {
         //SELECT *
         List<Score> scores = new ArrayList<>();
         try (Connection con = getConnection();
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM scores")) {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM scores")) {
             while (rs.next()) {
                 String nick = rs.getString("nick");
                 int points = rs.getInt("points");
@@ -71,13 +71,46 @@ public class DbConnector implements ScoreStorageInterface {
     @Override
     public List<Score> getTopScores(int number){
         // SELECT s LIMIT
-        return new ArrayList<>();
+        List<Score> scores = new ArrayList<>();
+        try (Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM scores ORDER BY points DESC LIMIT ?")) {
+
+            ps.setInt(1, number);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    String nick = rs.getString("nick");
+                    int points = rs.getInt("points");
+                    scores.add(new Score(nick, points));
+                }
+            }
+        } catch (SQLException e){
+            log.error("Error getting top scores from database: {}", e.getMessage(), e);
+        }
+
+        return scores;
     }
 
     @Override
     public Score getScoreByName(String name){
         // SELECT WHERE name ==
+        Score score = new Score();
+        try (Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM scores WHERE nick == ? ORDER BY  points DESC")){
 
-        return new Score();
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()){
+                if (rs.next()) {
+                    String nick = rs.getString("nick");
+                    int points = rs.getInt("points");
+                    score.setNick(nick);
+                    score.setPoints(points);
+                }
+            }
+
+        } catch (SQLException e){
+            log.error("Error getting top scores from database: {}", e.getMessage(), e);
+        }
+
+        return score;
     }
 }

@@ -26,7 +26,9 @@
 │               └── cz
 │                   └── vsb
 │                       └── fei
-│                           └── AppTest.java
+│                           └── project
+│                               └── data
+│                                   └── AppTest.java
 ├── project-file
 │   ├── pom.xml
 │   ├── src
@@ -248,4 +250,4 @@
 ├── structure_exports
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-117 directories, 132 files
+119 directories, 132 files

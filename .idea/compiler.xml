@@ -17,6 +17,7 @@
         </processorPath>
         <module name="project-game" />
         <module name="project-file" />
+        <module name="project-data" />
       </profile>
     </annotationProcessing>
   </component>
