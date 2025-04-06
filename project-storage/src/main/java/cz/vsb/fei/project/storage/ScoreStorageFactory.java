@@ -2,7 +2,7 @@ package cz.vsb.fei.project.storage;
 
 public class ScoreStorageFactory {
 
-    private static final BackendType BACKEND_TYPE = BackendType.FILE;
+    private static final BackendType BACKEND_TYPE = BackendType.DB;
 
     public static ScoreStorageInterface createStorage() {
         return switch (BACKEND_TYPE) {

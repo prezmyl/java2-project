@@ -2,6 +2,7 @@
 ├── high_scores.txt
 ├── logs
 │   └── app.log
+├── log.txt
 ├── myProjectStructure.txt
 ├── pom.xml
 ├── project-data
@@ -232,6 +233,7 @@
 │   │   │   │   │       └── fei
 │   │   │   │   │           └── project
 │   │   │   │   │               └── storage
+│   │   │   │   │                   ├── BackendType.java
 │   │   │   │   │                   ├── DbConnector.java
 │   │   │   │   │                   ├── FileManager.java
 │   │   │   │   │                   ├── ScoreStorageFactory.java
@@ -258,8 +260,10 @@
 │       │   │       └── fei
 │       │   │           └── project
 │       │   │               └── storage
+│       │   │                   ├── BackendType.class
 │       │   │                   ├── DbConnector.class
 │       │   │                   ├── FileManager.class
+│       │   │                   ├── ScoreStorageFactory$1.class
 │       │   │                   ├── ScoreStorageFactory.class
 │       │   │                   └── ScoreStorageInterface.class
 │       │   └── module-info.class
@@ -310,4 +314,4 @@
 ├── structure_exports
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-146 directories, 165 files
+146 directories, 169 files

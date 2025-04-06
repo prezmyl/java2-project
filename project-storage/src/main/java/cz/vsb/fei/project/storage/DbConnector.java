@@ -17,7 +17,7 @@ public class DbConnector implements ScoreStorageInterface {
     // mozna private meotda pro otevreni spojeni
 
     public DbConnector() {
-
+        init();
     }
 
     private Connection getConnection() throws SQLException {
@@ -33,6 +33,7 @@ public class DbConnector implements ScoreStorageInterface {
        } catch (SQLException e) {
             log.error("Error connecting to database: {}", e.getMessage(), e);
        }
+       
 
     }
 

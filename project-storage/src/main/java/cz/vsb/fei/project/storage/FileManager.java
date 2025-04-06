@@ -19,21 +19,14 @@ public class FileManager implements ScoreStorageInterface {
     @Override
     public void init() {
         File file = new File(FILE_PATH);
-        System.out.println("[INIT] Kontrola existence souboru: " + file.getAbsolutePath());
-
         if (!file.exists()) {
             try {
-                boolean created = file.createNewFile();
-                System.out.println("[INIT] Soubor vytvořen: " + created);
+                file.createNewFile();
             } catch (IOException e) {
-                System.err.println("[INIT] Chyba při vytváření souboru:");
-                e.printStackTrace();
+                log.error("Error creating scores file: {}", e.getMessage(), e);
             }
-        } else {
-            System.out.println("[INIT] Soubor už existuje.");
         }
     }
-
 
     @Override
     public void insertScore(Score score) {
