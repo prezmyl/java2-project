@@ -1,4 +1,4 @@
-package cz.vsb.fei.project.file;
+package cz.vsb.fei.project.storage;
 
 import cz.vsb.fei.project.data.Score;
 

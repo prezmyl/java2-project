@@ -1,7 +1,7 @@
-package cz.vsb.fei.project.file;
+package cz.vsb.fei.project.storage;
 
 public class ScoreStorageFactory {
-    public static ScoreStorageInterface createStorage() {
+    public static DbConnector createStorage() {
         return new DbConnector();
     }
 }

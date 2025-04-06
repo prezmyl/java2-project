@@ -2,7 +2,7 @@ package cz.vsb.fei.project.game;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import cz.vsb.fei.project.file.FileManager;
+import cz.vsb.fei.project.storage.FileManager;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 

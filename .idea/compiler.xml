@@ -16,8 +16,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
         </processorPath>
         <module name="project-game" />
-        <module name="project-file" />
         <module name="project-data" />
+        <module name="project-storage" />
       </profile>
     </annotationProcessing>
   </component>

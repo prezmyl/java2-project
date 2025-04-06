@@ -1,7 +1,8 @@
-package cz.vsb.fei.project.file;
+package cz.vsb.fei.project.storage;
 
 
 import cz.vsb.fei.project.data.Score;
+import cz.vsb.fei.project.storage.ScoreStorageInterface;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
