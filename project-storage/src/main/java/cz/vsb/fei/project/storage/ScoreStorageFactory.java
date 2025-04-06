@@ -1,8 +1,15 @@
 package cz.vsb.fei.project.storage;
 
 public class ScoreStorageFactory {
-    public static DbConnector createStorage() {
-        return new DbConnector();
+
+    private static final BackendType BACKEND_TYPE = BackendType.FILE;
+
+    public static ScoreStorageInterface createStorage() {
+        return switch (BACKEND_TYPE) {
+            //case JPA -> new JPA();
+            case DB -> new DbConnector();
+            case FILE -> new FileManager();
+        };
     }
 }
 // TODO: V budoucnu nacitat typ z konfigurace nebo predat jako parametr

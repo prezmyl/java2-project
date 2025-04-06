@@ -1,6 +1,7 @@
 package cz.vsb.fei.project.game;
 
 
+import cz.vsb.fei.project.data.Score;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -131,11 +132,11 @@ public class GameController implements GameStateObserver {
 
     @FXML
     private void displayHighScores() {
-        List<Integer> highScores = gameSession.getScoreManager().getHighScores();
+        List<Score> highScores = gameSession.getScoreManager().getHighScores();
         if (highScores.isEmpty()) {
             showAlert("No high scores available.");
         } else {
-            StringBuilder sb = new StringBuilder("Top 5 High Scores:\n");
+            StringBuilder sb = new StringBuilder("Top High Scores:\n");
             for (int i = 0; i < highScores.size(); i++) {
                 sb.append(i + 1).append(". ").append(highScores.get(i)).append("\n");
             }

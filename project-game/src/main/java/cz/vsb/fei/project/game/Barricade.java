@@ -4,7 +4,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class Barricade extends GameObject implements DrawAble, Collisionable{
 
     @Getter
@@ -50,11 +52,11 @@ public class Barricade extends GameObject implements DrawAble, Collisionable{
     @Override
     public void hitBy(Collisionable another) {
         if (another instanceof Bullet bullet && bullet.getType() == Bullet.Type.PLAYER) {
-            System.out.println("Barricade hit by bullet.");
+            log.debug("Barricade hit by bullet.");
             health--;
             if (health <= 0) {
                 setActive(false); // Deaktivace bariéry při zásahu střelou
-                System.out.println("Barricade destroyed!");
+                log.debug("Barricade destroyed!");
             }
         }
     }

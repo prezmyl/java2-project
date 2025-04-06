@@ -33,6 +33,8 @@ public class GameSettings {
     private double playerStartX = 100;
     @Default
     private double playerStartY = 350;
+    @Default
+    private int maxScore = 20;
 
     public static void configure(GameSettings settings) {
         instance = settings;
