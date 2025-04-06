@@ -1,214 +1,126 @@
-/usr/lib/jvm/java-21-openjdk/bin/java -javaagent:/home/xpolas/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=35823 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23.jar -p /home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23-linux.jar:/home/xpolas/banska/java2/project/project-storage/target/classes:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/xpolas/banska/java2/project/project-data/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23-linux.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/xpolas/banska/java2/project/project-game/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23-linux.jar -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
-20:11:16.331 [JavaFX Application Thread] ERROR cz.vsb.fei.project.storage.DbConnector - Error connecting to database: No suitable driver found for jdbc:h2:file:./score
-java.sql.SQLException: No suitable driver found for jdbc:h2:file:./score
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:708) ~[java.sql:?]
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253) ~[java.sql:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.getConnection(DbConnector.java:24) ~[classes/:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.init(DbConnector.java:30) ~[classes/:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.<init>(DbConnector.java:20) ~[classes/:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.ScoreStorageFactory.createStorage(ScoreStorageFactory.java:10) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.<init>(ScoreManager.java:24) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameSession.<init>(GameSession.java:41) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.AppGame.startGame(AppGame.java:49) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.MenuController.startGame(MenuController.java:18) ~[classes/:?]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72) ~[javafx-base-23-linux.jar:?]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270) ~[javafx-base-23-linux.jar:?]
-	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.fxml/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1858) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.fxml/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/javafx.event.Event.fireEvent(Event.java:199) ~[javafx-base-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8963) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-23-linux.jar:?]
-	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207) ~[javafx-controls-23-linux.jar:?]
-	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/javafx.event.Event.fireEvent(Event.java:199) ~[javafx-base-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3987) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1893) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2711) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400) ~[?:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:560) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:946) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
-[DEBUG] Working dir: /home/xpolas/banska/java2/project
-[DEBUG] JDBC: jdbc:h2:file:./score
-20:11:22.121 [JavaFX Application Thread] ERROR cz.vsb.fei.project.storage.DbConnector - Error inserting score into database: No suitable driver found for jdbc:h2:file:./score
-java.sql.SQLException: No suitable driver found for jdbc:h2:file:./score
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:708) ~[java.sql:?]
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253) ~[java.sql:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.getConnection(DbConnector.java:24) ~[classes/:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.insertScore(DbConnector.java:45) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158) ~[classes/:?]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72) ~[javafx-base-23-linux.jar:?]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270) ~[javafx-base-23-linux.jar:?]
-	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.fxml/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.fxml/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/javafx.event.Event.fireEvent(Event.java:199) ~[javafx-base-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8963) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-23-linux.jar:?]
-	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207) ~[javafx-controls-23-linux.jar:?]
-	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/javafx.event.Event.fireEvent(Event.java:199) ~[javafx-base-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3987) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1893) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2711) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400) ~[?:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:560) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:946) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
-20:11:25.137 [JavaFX Application Thread] ERROR cz.vsb.fei.project.storage.DbConnector - Error getting top scores from database: No suitable driver found for jdbc:h2:file:./score
-java.sql.SQLException: No suitable driver found for jdbc:h2:file:./score
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:708) ~[java.sql:?]
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253) ~[java.sql:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.getConnection(DbConnector.java:24) ~[classes/:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.getTopScores(DbConnector.java:79) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.getHighScores(ScoreManager.java:45) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.displayHighScores(GameController.java:135) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleHighScoresButton(GameController.java:149) ~[classes/:?]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72) ~[javafx-base-23-linux.jar:?]
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270) ~[javafx-base-23-linux.jar:?]
-	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.fxml/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.fxml/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731) ~[javafx-fxml-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/javafx.event.Event.fireEvent(Event.java:199) ~[javafx-base-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8963) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-23-linux.jar:?]
-	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207) ~[javafx-controls-23-linux.jar:?]
-	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-23-linux.jar:?]
-	at javafx.base/javafx.event.Event.fireEvent(Event.java:199) ~[javafx-base-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3987) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1893) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2711) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400) ~[?:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:560) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:946) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
-20:11:27.890 [JavaFX Application Thread] ERROR cz.vsb.fei.project.storage.DbConnector - Error inserting score into database: No suitable driver found for jdbc:h2:file:./score
-java.sql.SQLException: No suitable driver found for jdbc:h2:file:./score
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:708) ~[java.sql:?]
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253) ~[java.sql:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.getConnection(DbConnector.java:24) ~[classes/:?]
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.DbConnector.insertScore(DbConnector.java:45) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50) ~[classes/:?]
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.AppGame.stop(AppGame.java:76) ~[classes/:?]
-	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$10(LauncherImpl.java:858) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:483) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400) ~[?:?]
-	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-23-linux.jar:?]
-	at javafx.graphics/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264) ~[javafx-graphics-23-linux.jar:?]
-	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
-
-Process finished with exit code 0
+/usr/lib/jvm/java-21-openjdk/bin/java -javaagent:/home/xpolas/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=39853 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/xpolas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/xpolas/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/xpolas/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/xpolas/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/xpolas/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/xpolas/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/xpolas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/xpolas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/home/xpolas/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/home/xpolas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/xpolas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/xpolas/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/xpolas/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23.jar -p /home/xpolas/banska/java2/project/project-data/target/classes:/home/xpolas/banska/java2/project/project-storage/target/classes:/home/xpolas/banska/java2/project/project-game/target/classes:/home/xpolas/.m2/repository/org/hibernate/orm/hibernate-core/6.6.11.Final/hibernate-core-6.6.11.Final.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23-linux.jar:/home/xpolas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23-linux.jar -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
+Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
+	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
+	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
+	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
+	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
+	at javafx.graphics@23/javafx.scene.Scene$MouseHandler.process(Scene.java:3987)
+	at javafx.graphics@23/javafx.scene.Scene.processMouseEvent(Scene.java:1893)
+	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2711)
+	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@23/com.sun.glass.ui.View.handleMouseEvent(View.java:560)
+	at javafx.graphics@23/com.sun.glass.ui.View.notifyMouse(View.java:946)
+	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
+	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1858)
+	... 46 more
+Caused by: java.lang.ExceptionInInitializerError
+	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.ScoreStorageFactory.createStorage(ScoreStorageFactory.java:9)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.<init>(ScoreManager.java:24)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameSession.<init>(GameSession.java:41)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.AppGame.startGame(AppGame.java:49)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.MenuController.startGame(MenuController.java:18)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 53 more
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: java2] Unable to build Hibernate SessionFactory
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.persistenceException(EntityManagerFactoryBuilderImpl.java:1601)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1522)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:55)
+	at jakarta.persistence@3.2.0/jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:90)
+	at jakarta.persistence@3.2.0/jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:66)
+	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.<clinit>(JpaConnector.java:12)
+	... 59 more
+Caused by: org.hibernate.MappingException: Could not instantiate persister org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:105)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:77)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.metamodel.model.domain.internal.MappingMetamodelImpl.processBootEntities(MappingMetamodelImpl.java:250)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.metamodel.model.domain.internal.MappingMetamodelImpl.finishInitialization(MappingMetamodelImpl.java:184)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionFactoryImpl.initializeMappingModel(SessionFactoryImpl.java:373)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:302)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517)
+	... 63 more
+Caused by: java.lang.IllegalArgumentException: Could not create type
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:170)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.bytecode.internal.bytebuddy.ByteBuddyState.load(ByteBuddyState.java:200)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.bytecode.internal.bytebuddy.ByteBuddyState.loadProxy(ByteBuddyState.java:115)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.proxy.pojo.bytebuddy.ByteBuddyProxyHelper.buildProxy(ByteBuddyProxyHelper.java:62)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.proxy.pojo.bytebuddy.ByteBuddyProxyFactory.postInstantiate(ByteBuddyProxyFactory.java:65)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.metamodel.internal.EntityRepresentationStrategyPojoStandard.createProxyFactory(EntityRepresentationStrategyPojoStandard.java:305)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.metamodel.internal.EntityRepresentationStrategyPojoStandard.resolveProxyFactory(EntityRepresentationStrategyPojoStandard.java:179)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.metamodel.internal.EntityRepresentationStrategyPojoStandard.<init>(EntityRepresentationStrategyPojoStandard.java:145)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.metamodel.internal.ManagedTypeRepresentationResolverStandard.resolveStrategy(ManagedTypeRepresentationResolverStandard.java:62)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:562)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:134)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:94)
+	... 70 more
+Caused by: java.lang.IllegalAccessError: superinterface check failed: class cz.vsb.fei.project.data.Score$HibernateProxy$1al6CH4L (in module cz.vsb.fei.project.data) cannot access class org.hibernate.proxy.ProxyConfiguration (in module org.hibernate.orm.core) because module cz.vsb.fei.project.data does not read module org.hibernate.orm.core
+	at java.base/java.lang.ClassLoader.defineClass0(Native Method)
+	at java.base/java.lang.System$2.defineClass(System.java:2394)
+	at java.base/java.lang.invoke.MethodHandles$Lookup$ClassDefiner.defineClass(MethodHandles.java:2505)
+	at java.base/java.lang.invoke.MethodHandles$Lookup$ClassDefiner.defineClass(MethodHandles.java:2480)
+	at java.base/java.lang.invoke.MethodHandles$Lookup.defineClass(MethodHandles.java:1865)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at net.bytebuddy.utility.Invoker$Dispatcher.invoke(Unknown Source)
+	at net.bytebuddy.utility.dispatcher.JavaDispatcher$Dispatcher$ForNonStaticMethod.invoke(JavaDispatcher.java:1033)
+	at net.bytebuddy.utility.dispatcher.JavaDispatcher$ProxiedInvocationHandler.invoke(JavaDispatcher.java:1163)
+	at jdk.proxy2/jdk.proxy2.$Proxy58.defineClass(Unknown Source)
+	at net.bytebuddy.dynamic.loading.ClassInjector$UsingLookup.injectRaw(ClassInjector.java:1685)
+	at net.bytebuddy.dynamic.loading.ClassInjector$AbstractBase.injectRaw(ClassInjector.java:166)
+	at net.bytebuddy.dynamic.loading.ClassInjector$AbstractBase.inject(ClassInjector.java:154)
+	at net.bytebuddy.dynamic.loading.ClassLoadingStrategy$UsingLookup.load(ClassLoadingStrategy.java:519)
+	at net.bytebuddy.dynamic.TypeResolutionStrategy$Passive.initialize(TypeResolutionStrategy.java:101)
+	at net.bytebuddy.dynamic.DynamicType$Default$Unloaded.load(DynamicType.java:6424)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.bytecode.internal.bytebuddy.ByteBuddyState$1.run(ByteBuddyState.java:208)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.bytecode.internal.bytebuddy.ByteBuddyState$1.run(ByteBuddyState.java:204)
+	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.bytecode.internal.bytebuddy.ByteBuddyState.lambda$load$0(ByteBuddyState.java:217)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
+	... 85 more

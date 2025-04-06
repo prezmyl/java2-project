@@ -2,23 +2,43 @@ package cz.vsb.fei.project.data;
 
 import jdk.jfr.DataAmount;
 import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Transient;
+
+
 
 import java.util.Random;
 
 // DTO - Data transfer Object: jednoducha datova trida ma jen atributy
 // zadne logicke metody
 //slouzi k prenosu dat mezi vrstvami (napr. databaze <-> UI)
+
+@Entity
+@Table(name = "scores")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class Score {
 
-    private static final Random RANDOM = new Random();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nick;
     private int points;
+
+    @Transient
+    private static final Random RANDOM = new Random();
+
+    public Score(String nick, int points){
+        this.nick = nick;
+        this.points = points;
+    }
+
 
     public Score(int points) {
         this.points = points;
@@ -39,6 +59,7 @@ public class Score {
         return nicks[RANDOM.nextInt(nicks.length)];
     }
 
+    @Transient
     public static final String[] nicks = { "CyberSurfer", "PixelPioneer", "SocialSavvy", "DigitalDynamo", "ByteBuddy", "InstaGuru",
             "TikTokTornado", "SnapMaster", "TweetTrendsetter", "ChatChampion", "HashtagHero", "EmojiEnthusiast",
             "StoryStylist", "SelfieStar", "FilterFanatic", "VlogVirtuoso", "Memelord", "InfluencerInsider",
