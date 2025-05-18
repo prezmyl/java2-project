@@ -208,3 +208,115 @@ Nezapomeňte na anotace pro konstruktor bez parametrů
 Anotace pro vazby OneToMany a ManyToOne a na parametr mappedBy
 Zajistěte aby se kolekce nevypisovaly jako soužást metody toString
 Zajestěte aby se pro hashcode a equals používalo pouze id.
+
+
+
+
+ukol 4:
+Spring server
+Použijte https://start.spring.io (Spring initializer) a vytvořte nový maven projekt web server nebo použijte server z minulého domácího úkolu.
+
+Pří vytváření zvolte:
+
+Maven
+verzi 3.4.4
+Group, artifact, name, package name - zvolte nějaké smysluplné hodnoty (ne demo a example)
+Packaging JAR
+Java version 21
+Do závislostí přidejte (pomocí tlačítka "ADD DEPENDENCIES...")
+
+Lombok
+Spring Web
+Thymeleaf
+Spring Data JPA
+H2 Database
+Projekt vygenerujte (stáhněte) a do pom.xml přidejte do závislostí:
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <scope>provided</scope>
+            <version>6.6.11.Final</version>
+        </dependency>
+Do pom.xml přidejte do /project/build/plugins/plugin(maven-compiler-plugin)/configuration/annotationProcessorPaths/:
+
+                        <path>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-jpamodelgen</artifactId>
+                            <version>6.6.11.Final</version>
+                        </path>
+Do pom.xml přidejte do /project/build/plugins/plugin(maven-compiler-plugin)/:
+
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+Do pom.xml přidejte do /project/build/plugins/:
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                    <configuration>
+                        <sources>
+                            <source>target/generated-sources/annotations</source>
+                        </sources>
+                    </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+Implementujte
+Vytvořte 2 entity takové, které mají mezi sebou vazbu 1:N
+Vytvořte pro ně JPA repozitáře
+Vytvořte REST controllery s metodami pro CRUD operace (dodržte pravidla REST api).
+Použijte knihovnu pro vygenerování Swagger UI
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+http://localhost:8080/swagger-ui/index.html
+Dejte pozor při serializaci a deserializaci entit do JSONu, u vazeb nejspíše dojde k zacyklení (StackOverflowException) problém můžete řešit několika způsoby:
+DTO - Data Transfer Object: Serializace/deserializace zástupných objektů DTO (obyčejných java objektů - ne entit), které o obsahují jen to co se má serializovat/deserializovat
+Rozbití: Použití anotace @JsonIgnore případně definice pomocné proměnné s ID pro serializaci do JSONu
+@Column(insertable = false, updatable = false, name = "player_id")
+private Long playerId;
+Případně použití @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") viz https://www.baeldung.com/jackson-advanced-annotations
+Managed Reference: Použití anotací @JsonManagedReference a @JsonBackReference viz https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
+Třída na pomoc s generováním náhodných textů Tools.java
+
+
+
+
+ukol 5:
+Vlákna
+Použijte vlákna (Thread) k ovládání, nepřátel, plošin nebo jiných autonomně pohyblivých grafických entit ve vaší hře.
+
+Vlákno vytvoříte pro každou takovou entitu a v metodě run() nedefinujete její chovní (změnu směru, rychlosti, změnu animace, zánik nebo vytvoření další entity a podobně). To by mělo usnadnit popis chování entity, ale je nutno dát pozor na kritické sekce, kde se jednotlivá vlákna mohou ovlivnit, nezapomeňte použít synchronized právě v takovýchto místech.
+
+Internacinalizace
+Použijte java lokalizaci (ResourceBundle, Locale) pro překlad textů zobrazovaných ve vaší hře. Vytvořte "resource bundle" pro několik jazyků (alespoň dva).
+
+Použijte např. parametry -Duser.language=cs -Duser.country=CZ nebo jiný způsob změny výchozího locales
+
+Správné nastavení pro *.properties soubory a české nebo jiné speciální znaky je následující:
+Postaru - Do java 8 povinné
+Kódování ISO-8859-1 a UTF znaky se eskejpují ve formátu \uxxxx (př. \u017Dlu\u0165ou\u010Dk\u00FD k\u016F\u0148 sk\u00E1\u010De p\u0159es kalu\u017Ee) - IDEA nastavení: - Settings -> Editor -> File Encodings -> Default encoding for properties files: ISO-8859-1 - Settings -> Editor -> File Encodings -> Transparent native-to-ascii conversion: true - Eclipse - není třeba nastavovat
+
+Novější varianta
+Kódování UTF-8
+
+IDEA nastavení:
+Settings -> Editor -> File Encodings -> Default encoding for properties files: UTF-8
+Settings -> Editor -> File Encodings -> Transparent native-to-ascii conversion: false
+Eclipse s pluginem ResourceBundle editor:
+< mouse RIGHT click > on file -> Properties -> Text file encoding: UTF-8
+Window -> Preferences -> ResourceBundle editor -> Convert \uxxxx .... : false

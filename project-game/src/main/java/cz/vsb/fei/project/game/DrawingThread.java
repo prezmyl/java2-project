@@ -49,6 +49,7 @@ public class DrawingThread extends AnimationTimer {
 		deltaT = (now - lastTime) / 1e9;
 		lastTime = now;
 		gameSession.updateGameTime(deltaT);
+		gameSession.setLastDeltaT(deltaT);
 
 		if (gameSession.getPlayer().getHealth().getLives() <= 0 || gameSession.checkEnemyReachedGround()) {
 			stop();
@@ -60,16 +61,26 @@ public class DrawingThread extends AnimationTimer {
 			gameStateObserver.onGameWin();
 		}
 
-		gameSession.enemyShoot(now);
+		//gameSession.enemyShoot(now);
 		gc.clearRect(0, 0, Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
 		gameSession.removeInactiveObjects();
 		checkCollisions();
 
 		// Vykreslení a simulace DrawableSimulable
-		gameSession.getDrawableSimulables().forEach(obj -> {
+		/*gameSession.getDrawableSimulables().forEach(obj -> {
 			obj.simulate(deltaT);
 			obj.draw(gc);
-		});
+		});*/
+		//tady nevolam simulate -> vlakna to resi pro enemy
+		gameSession.getDrawableSimulables()
+				.filter(obj -> !(obj instanceof Enemy)) // Enemy simulate NE!
+				.forEach(obj -> {
+					obj.simulate(deltaT);
+					obj.draw(gc);
+				});
+		gameSession.getDrawableSimulables()
+				.filter(Enemy.class::isInstance)
+						.forEach(obj -> obj.draw(gc));
 
 		// Vykreslení DrawAble
 		gameSession.getDrawables().forEach(obj -> obj.draw(gc));
@@ -77,7 +88,8 @@ public class DrawingThread extends AnimationTimer {
 		gameStateObserver.onScoreUpdate(scoreManager.getPoints());
 		gameStateObserver.onLivesUpdate(player.getHealth().getLives());
 
-		gameSession.attemptSpawn();
+		//gameSession.attemptSpawn();
+		gameSession.attemptSpawnUfoEnenemyWorker(); //Vlakna
 
 	}
 

@@ -9,6 +9,8 @@
                       transaction-type="RESOURCE_LOCAL">
         <!-- pridani DTO tridy, tak kde jsou entity -->
         <class>cz.vsb.fei.project.data.Score</class>
+        <class>cz.vsb.fei.project.data.GameSessionEntity</class>
+
 
         <!-- If you are running in a production environment, add a managed data
             source, this example data source is just for development and testing! -->

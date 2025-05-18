@@ -78,6 +78,9 @@ public class AppGame extends Application {
 		if (drawingThread != null) {
 			drawingThread.stop();
 		}
+		if (gameSession != null) {
+			gameSession.stopAllEnemyThreads();
+		}
 		super.stop();
 	}
 }

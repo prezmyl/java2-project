@@ -2,6 +2,7 @@ package cz.vsb.fei.project.game;
 
 import javafx.scene.Scene;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class GameSession {
     @Getter
     private final List<Enemy> enemies;
     @Getter
+    private final List<Thread> enemyThreads = new ArrayList<>();
+
+    @Getter
     private final List<Barricade> barricades;
     @Getter
     private final List<Bullet> bullets;
@@ -31,6 +35,13 @@ public class GameSession {
     @Getter
     private double gameTime = 0; // Celkový herní čas, nevyuzito
 
+    @Getter
+    private final Object gameLock = new Object();
+
+    @Getter
+    @Setter
+    private volatile double lastDeltaT = 0.016;
+
 
     public GameSession(Scene scene) {
         this.scene = scene;
@@ -41,8 +52,62 @@ public class GameSession {
         this.scoreManager = new ScoreManager();
         this.ground = new Ground();
 
-        initializeEnemies();
+        initializeEnemiesEnemiesWorker();
         initializeBarricades();
+    }
+
+    public void initializeEnemiesEnemiesWorker() {
+        for (int i = 0; i < 11; i++) {
+            Enemy enemy = new Enemy(100 + i * 60, 50, this);
+            enemies.add(enemy);
+
+            EnemyWorker worker = new EnemyWorker(
+                    enemy,
+                    this
+
+            );
+            Thread thread = new Thread(worker);
+            thread.start();
+
+            addEnemyThread(thread);
+        }
+
+    }
+
+    public void addEnemyThread(Thread t) {
+        enemyThreads.add(t);
+    }
+
+    public void stopAllEnemyThreads() {
+        for (Thread t : enemyThreads){
+            t.interrupt();
+        }
+        enemyThreads.clear();
+    }
+
+    public void attemptSpawnUfoEnenemyWorker() {
+        if (hasActiveUfo()) {
+            return;
+        }
+
+        log.info("Attempting to spawn UFO...");
+        Random random = new Random();
+        if (random.nextDouble() < 0.001) {
+            boolean movingRight = random.nextBoolean();
+            double startX = movingRight ? 0 : (Constant.GAME_WIDTH - Constant.UFO_WIDTH);
+            Ufo ufo = new Ufo(startX, 50, this, movingRight);
+            addEnemy(ufo);
+
+          // ===== Thread for Ufo =====
+            EnemyWorker ufoWorker = new EnemyWorker(
+                    ufo,
+                    this
+            );
+            Thread ufoThread = new Thread(ufoWorker);
+            ufoThread.start();
+
+            enemyThreads.add(ufoThread);
+        }
     }
 
 

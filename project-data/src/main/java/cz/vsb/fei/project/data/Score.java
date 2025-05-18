@@ -1,14 +1,8 @@
 package cz.vsb.fei.project.data;
 
+import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
 import lombok.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Transient;
-
 
 
 import java.util.Random;
@@ -30,6 +24,11 @@ public class Score {
 
     private String nick;
     private int points;
+
+    @ManyToOne
+    @JoinColumn(name = "game_session_id")
+    private GameSessionEntity gameSession;
+
 
     @Transient
     private static final Random RANDOM = new Random();
