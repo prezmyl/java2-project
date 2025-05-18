@@ -8,6 +8,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 @Log4j2
 public class AppGame extends Application {
 
@@ -21,8 +24,15 @@ public class AppGame extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			//Internatialisation
+			Locale locale = Locale.getDefault();
+			// or force Czech for testing:
+			// Locale locale = new Locale("cs", "CZ");
+			ResourceBundle bundle = ResourceBundle.getBundle("messages", locale);
+
+
 			// Nacteni menu jako vychozi obrazovka
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/cz/vsb/fei/project/game/menuWindow.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/cz/vsb/fei/project/game/menuWindow.fxml"), bundle);
 			Pane menuRoot = loader.load();
 
 			// Nastaveni akce pro prepnuti na herni obrazovku

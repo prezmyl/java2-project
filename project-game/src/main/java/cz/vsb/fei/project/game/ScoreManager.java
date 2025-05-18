@@ -10,7 +10,10 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
 
+import java.text.MessageFormat;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Log4j2
 public class ScoreManager {
@@ -18,6 +21,8 @@ public class ScoreManager {
     private int points;
     private GraphicsContext gc;
     private final ScoreStorageInterface scoreStorage;
+
+    private static final ResourceBundle BUNDLE = ResourceBundle.getBundle("messages", Locale.getDefault());
 
     public ScoreManager() {
         this.points = 0;
@@ -36,7 +41,7 @@ public class ScoreManager {
     public void update() {
         if (gc != null) {
             gc.setFill(Color.BLACK);
-            gc.fillText("Score: " + points, 10, 40); // Zobrazení skóre
+            gc.fillText(MessageFormat.format(BUNDLE.getString("score.points"), points), 10, 40);
         }
     }
 
