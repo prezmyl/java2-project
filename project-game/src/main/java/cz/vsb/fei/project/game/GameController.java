@@ -132,7 +132,22 @@ public class GameController implements GameStateObserver {
 
     @FXML
     private void displayHighScores() {
-        List<Score> highScores = gameSession.getScoreManager().getHighScores();
+        gameSession.getScoreManager().getHighScores(list -> {
+            //jump back from http thread to JavaFX thred
+            Platform.runLater(() -> {
+                if (list.isEmpty()){
+                    showAlert("No high scores available.");
+                } else {
+                    StringBuilder sb = new StringBuilder("Top High Scores:\n");
+                    for (int i = 0; i < list.size(); i++) {
+                        sb.append(i + 1).append(". ").append(list.get(i)).append("\n");
+                    }
+                    showAlert(sb.toString());
+                }
+            });
+        });
+
+      /*  List<Score> highScores = gameSession.getScoreManager().getHighScores();
         if (highScores.isEmpty()) {
             showAlert("No high scores available.");
         } else {
@@ -141,7 +156,7 @@ public class GameController implements GameStateObserver {
                 sb.append(i + 1).append(". ").append(highScores.get(i)).append("\n");
             }
             showAlert(sb.toString());
-        }
+        }*/
     }
 
     @FXML
@@ -167,7 +182,7 @@ public class GameController implements GameStateObserver {
     }
 
     private void saveCurrentScore() {
-        gameSession.getScoreManager().saveCurrentScore();
+        gameSession.getScoreManager().saveScore();
         showAlert("Score saved successfully!");
     }
 

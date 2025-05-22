@@ -133,6 +133,7 @@
 │   │   │   │   │                   ├── Player.java
 │   │   │   │   │                   ├── Routines.java
 │   │   │   │   │                   ├── ScoreManager.java
+│   │   │   │   │                   ├── ScoreManagerOldJPAmodul.java
 │   │   │   │   │                   └── Ufo.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
@@ -145,7 +146,9 @@
 │   │   │       │                   ├── background1.png
 │   │   │       │                   ├── gameWindow.fxml
 │   │   │       │                   └── menuWindow.fxml
-│   │   │       └── log4j2.xml
+│   │   │       ├── log4j2.xml
+│   │   │       ├── messages_cs.properties
+│   │   │       └── messages.properties
 │   │   └── test
 │   │       └── java
 │   │           └── cz
@@ -194,6 +197,8 @@
 │       │   │                   ├── ScoreManager.class
 │       │   │                   └── Ufo.class
 │       │   ├── log4j2.xml
+│       │   ├── messages_cs.properties
+│       │   ├── messages.properties
 │       │   └── module-info.class
 │       ├── generated-sources
 │       │   └── annotations
@@ -385,4 +390,4 @@
 ├── structure_exports
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-150 directories, 236 files
+150 directories, 241 files

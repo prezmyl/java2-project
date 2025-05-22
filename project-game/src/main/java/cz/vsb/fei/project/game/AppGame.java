@@ -83,7 +83,7 @@ public class AppGame extends Application {
 	@Override
 	public void stop() throws Exception {
 		if (gameSession != null) {
-			gameSession.getScoreManager().saveCurrentScore();
+			gameSession.getScoreManager().saveScore();
 		}
 		if (drawingThread != null) {
 			drawingThread.stop();

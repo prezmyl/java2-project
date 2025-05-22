@@ -85,7 +85,7 @@ public class DrawingThread extends AnimationTimer {
 		// Vykreslení DrawAble
 		gameSession.getDrawables().forEach(obj -> obj.draw(gc));
 
-		gameStateObserver.onScoreUpdate(scoreManager.getPoints());
+		gameStateObserver.onScoreUpdate(scoreManager.getScore());
 		gameStateObserver.onLivesUpdate(player.getHealth().getLives());
 
 		//gameSession.attemptSpawn();
