@@ -19,6 +19,7 @@
 │   │   │   │   │           └── project
 │   │   │   │   │               └── data
 │   │   │   │   │                   ├── GameSessionEntity.java
+│   │   │   │   │                   ├── PlayerEntity.java
 │   │   │   │   │                   └── Score.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
@@ -194,7 +195,10 @@
 │       │   │                   ├── Player$Health.class
 │       │   │                   ├── Player.class
 │       │   │                   ├── Routines.class
+│       │   │                   ├── ScoreManager$1.class
+│       │   │                   ├── ScoreManager$2.class
 │       │   │                   ├── ScoreManager.class
+│       │   │                   ├── ScoreManagerOldJPAmodul.class
 │       │   │                   └── Ufo.class
 │       │   ├── log4j2.xml
 │       │   ├── messages_cs.properties
@@ -388,6 +392,7 @@
 │               └── jpms.args
 ├── run.sh
 ├── structure_exports
+├── url_gitHub_project.txt
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-150 directories, 241 files
+150 directories, 246 files

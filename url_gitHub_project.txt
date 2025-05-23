@@ -1,0 +1,5 @@
+FE:
+https://github.com/prezmyl/java2-project
+
+BE:
+https://github.com/prezmyl/java2-project-backend
