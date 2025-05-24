@@ -137,7 +137,6 @@
 │   │   │   │   │                   ├── Player.java
 │   │   │   │   │                   ├── Routines.java
 │   │   │   │   │                   ├── ScoreClient.java
-│   │   │   │   │                   ├── ScoreManagerOldJPAmodul.java
 │   │   │   │   │                   └── Ufo.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
@@ -168,45 +167,20 @@
 │       │   │       └── fei
 │       │   │           └── project
 │       │   │               └── game
-│       │   │                   ├── AppGame.class
 │       │   │                   ├── application.css
 │       │   │                   ├── background1.png
-│       │   │                   ├── Barricade.class
-│       │   │                   ├── Bullet$Type.class
-│       │   │                   ├── Bullet.class
 │       │   │                   ├── Collisionable.class
-│       │   │                   ├── Constant.class
 │       │   │                   ├── Direction.class
 │       │   │                   ├── DrawAble.class
 │       │   │                   ├── DrawableSimulable.class
-│       │   │                   ├── DrawingThread.class
 │       │   │                   ├── Enemy.class
-│       │   │                   ├── EnemyWorker.class
-│       │   │                   ├── GameController$1.class
-│       │   │                   ├── GameController.class
 │       │   │                   ├── GameObject.class
 │       │   │                   ├── GameSession$1.class
 │       │   │                   ├── GameSession.class
-│       │   │                   ├── GameSessionClient$1.class
-│       │   │                   ├── GameSessionClient.class
-│       │   │                   ├── GameSettings$GameSettingsBuilder.class
-│       │   │                   ├── GameSettings.class
-│       │   │                   ├── GameStateObserver.class
 │       │   │                   ├── gameWindow.fxml
-│       │   │                   ├── Ground.class
-│       │   │                   ├── HealthDisplay.class
-│       │   │                   ├── MenuController.class
 │       │   │                   ├── menuWindow.fxml
 │       │   │                   ├── Player$Health.class
-│       │   │                   ├── Player.class
-│       │   │                   ├── PlayerClient$1.class
-│       │   │                   ├── PlayerClient.class
-│       │   │                   ├── Routines.class
-│       │   │                   ├── ScoreClient$1.class
-│       │   │                   ├── ScoreClient$2.class
-│       │   │                   ├── ScoreClient.class
-│       │   │                   ├── ScoreManagerOldJPAmodul.class
-│       │   │                   └── Ufo.class
+│       │   │                   └── Player.class
 │       │   ├── log4j2.xml
 │       │   ├── messages_cs.properties
 │       │   ├── messages.properties
@@ -281,125 +255,8 @@
 │           │                   └── AppTest.class
 │           └── META-INF
 │               └── jpms.args
-├── project-storage
-│   ├── pom.xml
-│   ├── src
-│   │   ├── main
-│   │   │   ├── java
-│   │   │   │   ├── cz
-│   │   │   │   │   └── vsb
-│   │   │   │   │       └── fei
-│   │   │   │   │           └── project
-│   │   │   │   │               └── storage
-│   │   │   │   │                   ├── BackendType.java
-│   │   │   │   │                   ├── DbConnector.java
-│   │   │   │   │                   ├── FileManager.java
-│   │   │   │   │                   ├── JpaConnector.java
-│   │   │   │   │                   ├── ScoreStorageFactory.java
-│   │   │   │   │                   └── ScoreStorageInterface.java
-│   │   │   │   └── module-info.java
-│   │   │   └── resources
-│   │   │       ├── cz
-│   │   │       │   └── vsb
-│   │   │       │       └── fei
-│   │   │       │           └── project
-│   │   │       │               └── storage
-│   │   │       └── META-INF
-│   │   │           └── persistence.xml
-│   │   └── test
-│   │       └── java
-│   │           └── cz
-│   │               └── vsb
-│   │                   └── fei
-│   │                       └── project
-│   │                           └── file
-│   │                               └── AppTest.java
-│   └── target
-│       ├── classes
-│       │   ├── cz
-│       │   │   └── vsb
-│       │   │       └── fei
-│       │   │           └── project
-│       │   │               └── storage
-│       │   │                   ├── BackendType.class
-│       │   │                   ├── DbConnector.class
-│       │   │                   ├── FileManager.class
-│       │   │                   ├── JpaConnector.class
-│       │   │                   ├── ScoreStorageFactory$1.class
-│       │   │                   ├── ScoreStorageFactory.class
-│       │   │                   └── ScoreStorageInterface.class
-│       │   ├── META-INF
-│       │   │   └── persistence.xml
-│       │   └── module-info.class
-│       ├── generated-sources
-│       │   └── annotations
-│       ├── generated-test-sources
-│       │   └── test-annotations
-│       ├── libs
-│       │   ├── angus-activation-2.0.0.jar
-│       │   ├── antlr4-runtime-4.13.0.jar
-│       │   ├── apiguardian-api-1.1.2.jar
-│       │   ├── byte-buddy-1.15.11.jar
-│       │   ├── classmate-1.5.1.jar
-│       │   ├── h2-2.2.224.jar
-│       │   ├── hibernate-commons-annotations-7.0.3.Final.jar
-│       │   ├── hibernate-core-6.6.11.Final.jar
-│       │   ├── hibernate-jpamodelgen-6.6.11.Final.jar
-│       │   ├── istack-commons-runtime-4.1.1.jar
-│       │   ├── jakarta.activation-api-2.1.0.jar
-│       │   ├── jakarta.annotation-api-2.1.1.jar
-│       │   ├── jakarta.inject-api-2.0.1.jar
-│       │   ├── jakarta.persistence-api-3.2.0.jar
-│       │   ├── jakarta.transaction-api-2.0.1.jar
-│       │   ├── jakarta.validation-api-3.0.2.jar
-│       │   ├── jakarta.xml.bind-api-4.0.0.jar
-│       │   ├── jandex-3.2.0.jar
-│       │   ├── jaxb-core-4.0.2.jar
-│       │   ├── jaxb-runtime-4.0.2.jar
-│       │   ├── jboss-logging-3.5.0.Final.jar
-│       │   ├── junit-jupiter-5.11.0.jar
-│       │   ├── junit-jupiter-api-5.11.0.jar
-│       │   ├── junit-jupiter-engine-5.11.0.jar
-│       │   ├── junit-jupiter-params-5.11.0.jar
-│       │   ├── junit-platform-commons-1.11.0.jar
-│       │   ├── junit-platform-engine-1.11.0.jar
-│       │   ├── log4j-api-2.23.1.jar
-│       │   ├── log4j-core-2.23.1.jar
-│       │   ├── lombok-1.18.34.jar
-│       │   ├── opentest4j-1.3.0.jar
-│       │   ├── project-data-1.0-SNAPSHOT.jar
-│       │   └── txw2-4.0.2.jar
-│       ├── maven-archiver
-│       │   └── pom.properties
-│       ├── maven-status
-│       │   └── maven-compiler-plugin
-│       │       ├── compile
-│       │       │   ├── default-compile
-│       │       │   │   ├── createdFiles.lst
-│       │       │   │   └── inputFiles.lst
-│       │       │   └── process
-│       │       │       ├── createdFiles.lst
-│       │       │       └── inputFiles.lst
-│       │       └── testCompile
-│       │           └── default-testCompile
-│       │               ├── createdFiles.lst
-│       │               └── inputFiles.lst
-│       ├── project-storage-1.0-SNAPSHOT.jar
-│       ├── surefire-reports
-│       │   ├── cz.vsb.fei.project.file.AppTest.txt
-│       │   └── TEST-cz.vsb.fei.project.file.AppTest.xml
-│       └── test-classes
-│           ├── cz
-│           │   └── vsb
-│           │       └── fei
-│           │           └── project
-│           │               └── file
-│           │                   └── AppTest.class
-│           └── META-INF
-│               └── jpms.args
 ├── run.sh
-├── structure_exports
 ├── url_gitHub_project.txt
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-150 directories, 253 files
+97 directories, 163 files
