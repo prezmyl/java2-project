@@ -3,6 +3,7 @@ package cz.vsb.fei.project.game;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cz.vsb.fei.project.data.GameSessionDTO;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class GameSessionClient {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
 
-    public void getAll(Consumer<List<GameSession>> callback) {
+    public void getAll(Consumer<List<GameSessionDTO>> callback) {
         HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL))
                 .GET()
                 .build();
@@ -28,7 +29,7 @@ public class GameSessionClient {
                 .thenApply(HttpResponse::body)
                 .thenApply(json -> {
                     try {
-                        return objectMapper.readValue(json, new TypeReference<List<GameSession>>() {});
+                        return objectMapper.readValue(json, new TypeReference<List<GameSessionDTO>>() {});
                     } catch (IOException e) {
                         log.error("Error parsing GameSession list from server", e);
                         throw new UncheckedIOException(e);
@@ -41,7 +42,7 @@ public class GameSessionClient {
                 });
     }
 
-    public void create(GameSession gs, Consumer<GameSession> callback) {
+    public void create(GameSessionDTO gs, Consumer<GameSessionDTO> callback) {
         try {
             String json = objectMapper.writeValueAsString(gs);
             HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL))
@@ -53,7 +54,7 @@ public class GameSessionClient {
                     .thenApply(HttpResponse::body)
                     .thenApply(body -> {
                         try {
-                            return objectMapper.readValue(body, GameSession.class);
+                            return objectMapper.readValue(body, GameSessionDTO.class);
                         } catch (IOException e) {
                             log.error("Error parsing GameSession JSON from server", e);
                             throw new UncheckedIOException(e);
@@ -69,7 +70,7 @@ public class GameSessionClient {
         }
     }
 
-    public void update(long id, GameSession gs, Consumer<GameSession> callback) {
+    public void update(long id, GameSessionDTO gs, Consumer<GameSessionDTO> callback) {
         try {
             String json = objectMapper.writeValueAsString(gs);
             HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL + "/" + id))
@@ -81,7 +82,7 @@ public class GameSessionClient {
                     .thenApply(HttpResponse::body)
                     .thenApply(body -> {
                         try {
-                            return objectMapper.readValue(body, GameSession.class);
+                            return objectMapper.readValue(body, GameSessionDTO.class);
                         } catch (IOException e) {
                             log.error("Error parsing updated GameSession JSON from server", e);
                             throw new UncheckedIOException(e);

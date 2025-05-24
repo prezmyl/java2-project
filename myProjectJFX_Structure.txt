@@ -18,9 +18,9 @@
 │   │   │   │   │       └── fei
 │   │   │   │   │           └── project
 │   │   │   │   │               └── data
-│   │   │   │   │                   ├── GameSessionEntity.java
-│   │   │   │   │                   ├── PlayerEntity.java
-│   │   │   │   │                   └── Score.java
+│   │   │   │   │                   ├── GameSessionDTO.java
+│   │   │   │   │                   ├── PlayerDTO.java
+│   │   │   │   │                   └── ScoreDTO.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
 │   │   │       ├── cz
@@ -125,15 +125,17 @@
 │   │   │   │   │                   ├── EnemyWorker.java
 │   │   │   │   │                   ├── GameController.java
 │   │   │   │   │                   ├── GameObject.java
+│   │   │   │   │                   ├── GameSessionClient.java
 │   │   │   │   │                   ├── GameSession.java
 │   │   │   │   │                   ├── GameSettings.java
 │   │   │   │   │                   ├── GameStateObserver.java
 │   │   │   │   │                   ├── Ground.java
 │   │   │   │   │                   ├── HealthDisplay.java
 │   │   │   │   │                   ├── MenuController.java
+│   │   │   │   │                   ├── PlayerClient.java
 │   │   │   │   │                   ├── Player.java
 │   │   │   │   │                   ├── Routines.java
-│   │   │   │   │                   ├── ScoreManager.java
+│   │   │   │   │                   ├── ScoreClient.java
 │   │   │   │   │                   ├── ScoreManagerOldJPAmodul.java
 │   │   │   │   │                   └── Ufo.java
 │   │   │   │   └── module-info.java
@@ -395,4 +397,4 @@
 ├── url_gitHub_project.txt
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-150 directories, 246 files
+150 directories, 248 files
