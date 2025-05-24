@@ -137,6 +137,7 @@
 │   │   │   │   │                   ├── Player.java
 │   │   │   │   │                   ├── Routines.java
 │   │   │   │   │                   ├── ScoreClient.java
+│   │   │   │   │                   ├── ScoreManager.java
 │   │   │   │   │                   └── Ufo.java
 │   │   │   │   └── module-info.java
 │   │   │   └── resources
@@ -259,4 +260,4 @@
 ├── url_gitHub_project.txt
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-97 directories, 163 files
+97 directories, 164 files

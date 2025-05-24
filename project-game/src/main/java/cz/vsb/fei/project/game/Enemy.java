@@ -109,13 +109,13 @@ public class Enemy extends GameObject implements DrawableSimulable, Collisionabl
 
             if (bullet.getType() == Bullet.Type.PLAYER){
                 log.info("Enemy hit by player bullet.");
-                gameSession.getScoreClient().increaseScore(100);
+                gameSession.getScoreManager().increase(100);
                 setActive(false);
             }
         }
         if (another instanceof Player) {
             log.info("Enemy hit by player ship.");
-            gameSession.getScoreClient().increaseScore(50);
+            gameSession.getScoreManager().increase(50);
             setActive(false);
 
         }

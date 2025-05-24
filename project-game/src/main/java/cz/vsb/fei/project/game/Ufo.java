@@ -84,7 +84,7 @@ public class Ufo extends Enemy {
         if (another instanceof Bullet bullet) {
             if (bullet.getType() == Bullet.Type.PLAYER){
                 log.debug("UFO hit by player bullet.");
-                gameSession.getScoreClient().increaseScore(300); // Přidání bodů za zničení UFO
+                gameSession.getScoreManager().increase(300); // Přidání bodů za zničení UFO
                 setActive(false);
             }
         }

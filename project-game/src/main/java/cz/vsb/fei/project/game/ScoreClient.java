@@ -1,5 +1,6 @@
 package cz.vsb.fei.project.game;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import cz.vsb.fei.project.data.ScoreDTO;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -33,15 +34,38 @@ public class ScoreClient {
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    private static final ResourceBundle BUNDLE = ResourceBundle.getBundle("messages", Locale.getDefault());
 
-    @Getter
-    @Setter
-    private int score = 0;
-    private GraphicsContext gc;
+
+    public void create(ScoreDTO dto, Consumer<ScoreDTO> callback) {
+        try {
+            String json = objectMapper.writeValueAsString(dto);
+            HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenApply(body -> {
+                        try {
+                            return objectMapper.readValue(body, ScoreDTO.class);
+                        } catch (IOException e) {
+                            log.error("Error while creating score on the server", e);
+                            throw new RuntimeException(e);
+                        }
+                    })
+                    .thenAccept(callback)
+                    .exceptionally(e -> {
+                        log.error("Error while creating score on the server", e);
+                        return null;
+                    });
+        } catch (JsonProcessingException e) {
+            log.error("Error while score JSON serialization ", e);
+        }
+    }
 
     public void saveScore(){
-        ScoreDTO scoreObj = new ScoreDTO(this.score);
+        ScoreDTO scoreObj = new ScoreDTO();
         try {
             String json = objectMapper.writeValueAsString(scoreObj);
 
@@ -73,7 +97,7 @@ public class ScoreClient {
                     try {
                         List<ScoreDTO> scores = objectMapper.readValue(response.body(), new TypeReference<>() {
                         });
-                        scores.forEach(sc -> log.info("{}: Score: {}", sc.getNick(), sc.getPoints()));
+                        scores.forEach(sc -> log.info("{}: Score: {}", sc.getPlayerNickname(), sc.getPoints()));
                     } catch (IOException e) {
                         log.error("Error while loading scores from server", e);
                     }
@@ -116,24 +140,9 @@ public class ScoreClient {
     }
 
 
-    public void update() {
-        if (gc != null) {
-            gc.setFill(Color.BLACK);
-            gc.fillText(
-                    MessageFormat.format(BUNDLE.getString("score.points"), score),
-                    10, 40
-            );
-        }
-    }
 
 
-    public void reset(){
-        score = 0;
-    }
 
-    public void increaseScore(int amount){
-        score += amount;
-    }
 
 
 }
