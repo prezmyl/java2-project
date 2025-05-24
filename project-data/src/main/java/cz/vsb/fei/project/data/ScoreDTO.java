@@ -1,7 +1,6 @@
 package cz.vsb.fei.project.data;
 
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 import lombok.*;
 
 
@@ -16,7 +15,7 @@ import java.util.Random;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Score {
+public class ScoreDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,19 +26,19 @@ public class Score {
 
     @ManyToOne
     @JoinColumn(name = "game_session_id")
-    private GameSessionEntity gameSession;
+    private GameSessionDTO gameSession;
 
 
     @Transient
     private static final Random RANDOM = new Random();
 
-    public Score(String nick, int points){
+    public ScoreDTO(String nick, int points){
         this.nick = nick;
         this.points = points;
     }
 
 
-    public Score(int points) {
+    public ScoreDTO(int points) {
         this.points = points;
         this.nick = getRandomNick();
     }
@@ -50,8 +49,8 @@ public class Score {
     }
 
 
-    public static Score randomScore() {
-        return new Score(getRandomNick(), RANDOM.nextInt(1000));
+    public static ScoreDTO randomScore() {
+        return new ScoreDTO(getRandomNick(), RANDOM.nextInt(1000));
     }
 
     public static String getRandomNick() {

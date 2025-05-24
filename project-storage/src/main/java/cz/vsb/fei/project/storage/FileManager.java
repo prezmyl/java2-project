@@ -1,6 +1,6 @@
 package cz.vsb.fei.project.storage;
 
-import cz.vsb.fei.project.data.Score;
+import cz.vsb.fei.project.data.ScoreDTO;
 import lombok.extern.log4j.Log4j2;
 import java.io.*;
 import java.util.ArrayList;
@@ -29,13 +29,13 @@ public class FileManager implements ScoreStorageInterface {
     }
 
     @Override
-    public void insertScore(Score score) {
-        List<Score> scores = getAll();
+    public void insertScore(ScoreDTO score) {
+        List<ScoreDTO> scores = getAll();
         scores.add(score);
-        scores.sort(Comparator.comparingInt(Score::getPoints).reversed());
+        scores.sort(Comparator.comparingInt(ScoreDTO::getPoints).reversed());
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))){
-            for (Score s : scores) {
+            for (ScoreDTO s : scores) {
                 writer.write(s.getNick() + "," + s.getPoints());
                 writer.newLine();
             }
@@ -47,8 +47,8 @@ public class FileManager implements ScoreStorageInterface {
     }
 
     @Override
-    public List<Score> getAll() {
-        List<Score> scores = new ArrayList<>();
+    public List<ScoreDTO> getAll() {
+        List<ScoreDTO> scores = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))){
             String line;
@@ -58,7 +58,7 @@ public class FileManager implements ScoreStorageInterface {
                     try {
                         String nick = tokens[0];
                         int points = Integer.parseInt(tokens[1]);
-                        scores.add(new Score(nick, points));
+                        scores.add(new ScoreDTO(nick, points));
 
                     } catch (NumberFormatException e) {
                         log.warn("Invalid score in file: {}", line, e);
@@ -74,19 +74,19 @@ public class FileManager implements ScoreStorageInterface {
 
 
     @Override
-    public List<Score> getTopScores(int number) {
+    public List<ScoreDTO> getTopScores(int number) {
         return getAll().stream()
-                .sorted(Comparator.comparingInt(Score::getPoints).reversed())
+                .sorted(Comparator.comparingInt(ScoreDTO::getPoints).reversed())
                 .limit(number)
                 .toList();
     }
 
     @Override
-    public Score getScoreByName(String name) {
+    public ScoreDTO getScoreByName(String name) {
         return getAll().stream()
                 .filter(score -> score.getNick().equalsIgnoreCase(name))
-                .max(Comparator.comparingInt(Score::getPoints))
-                .orElse(new Score());
+                .max(Comparator.comparingInt(ScoreDTO::getPoints))
+                .orElse(new ScoreDTO());
     }
 
 

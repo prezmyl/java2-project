@@ -1,7 +1,6 @@
 package cz.vsb.fei.project.game;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import cz.vsb.fei.project.data.GameSessionEntity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;

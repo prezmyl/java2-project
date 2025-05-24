@@ -1,11 +1,10 @@
 package cz.vsb.fei.project.game;
 
-import cz.vsb.fei.project.data.Score;
+import cz.vsb.fei.project.data.ScoreDTO;
 import cz.vsb.fei.project.storage.ScoreStorageFactory;
 import cz.vsb.fei.project.storage.ScoreStorageInterface;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import cz.vsb.fei.project.storage.FileManager;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
@@ -46,12 +45,12 @@ public class ScoreManagerOldJPAmodul {
     }
 
     // Nacte nejvyssi skore
-    public List<Score> getHighScores() {
+    public List<ScoreDTO> getHighScores() {
         return scoreStorage.getTopScores(GameSettings.getInstance().getMaxScore());
     }
 
     // Ulozi aktualni score
     public void saveCurrentScore() {
-        scoreStorage.insertScore(new Score(points));
+        scoreStorage.insertScore(new ScoreDTO(points));
     }
 }

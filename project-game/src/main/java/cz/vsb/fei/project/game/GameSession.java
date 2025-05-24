@@ -15,7 +15,7 @@ public class GameSession {
     @Getter
     private final Player player;
     @Getter
-    private final ScoreManager scoreManager;
+    private final ScoreClient scoreClient;
     @Getter
     private final List<Enemy> enemies;
     @Getter
@@ -49,7 +49,7 @@ public class GameSession {
         this.enemies = new ArrayList<>();
         this.barricades = new ArrayList<>();
         this.bullets = new ArrayList<>();
-        this.scoreManager = new ScoreManager();
+        this.scoreClient = new ScoreClient();
         this.ground = new Ground();
 
         initializeEnemiesEnemiesWorker();

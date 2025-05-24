@@ -113,7 +113,7 @@ insert into scores (game_session_id,nick,points,id) values (?,?,?,default) [4212
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:761)
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionImpl.persist(SessionImpl.java:745)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:32)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -200,7 +200,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -265,7 +265,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -330,7 +330,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -395,7 +395,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -460,7 +460,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -525,7 +525,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -533,7 +533,7 @@ Caused by: java.lang.IllegalStateException: Transaction already active
 Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.lambda$onGameOver$5(GameController.java:115)
 	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
@@ -559,7 +559,7 @@ Caused by: java.lang.RuntimeException: Exception in Application stop method
 Caused by: java.lang.IllegalStateException: Transaction already active
 	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
 	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreManager.saveCurrentScore(ScoreManager.java:50)
+	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
 	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.AppGame.stop(AppGame.java:76)
 	at javafx.graphics@23/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$10(LauncherImpl.java:858)
 	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:483)

@@ -1,8 +1,7 @@
 package cz.vsb.fei.project.storage;
 
 
-import cz.vsb.fei.project.data.Score;
-import cz.vsb.fei.project.storage.ScoreStorageInterface;
+import cz.vsb.fei.project.data.ScoreDTO;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
@@ -38,7 +37,7 @@ public class DbConnector implements ScoreStorageInterface {
     }
 
     @Override
-    public void insertScore(Score score) {
+    public void insertScore(ScoreDTO score) {
         //INSERT do tabulky
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement("INSERT INTO scores (nick, points) VALUES (?, ?)")) {
@@ -52,16 +51,16 @@ public class DbConnector implements ScoreStorageInterface {
     }
 
     @Override
-    public List<Score> getAll(){
+    public List<ScoreDTO> getAll(){
         //SELECT *
-        List<Score> scores = new ArrayList<>();
+        List<ScoreDTO> scores = new ArrayList<>();
         try (Connection con = getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM scores")) {
             while (rs.next()) {
                 String nick = rs.getString("nick");
                 int points = rs.getInt("points");
-                scores.add(new Score(nick, points));
+                scores.add(new ScoreDTO(nick, points));
             }
 
         } catch (SQLException e) {
@@ -71,9 +70,9 @@ public class DbConnector implements ScoreStorageInterface {
     }
 
     @Override
-    public List<Score> getTopScores(int number){
+    public List<ScoreDTO> getTopScores(int number){
         // SELECT s LIMIT
-        List<Score> scores = new ArrayList<>();
+        List<ScoreDTO> scores = new ArrayList<>();
         try (Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM scores ORDER BY points DESC LIMIT ?")) {
 
@@ -82,7 +81,7 @@ public class DbConnector implements ScoreStorageInterface {
                 while (rs.next()) {
                     String nick = rs.getString("nick");
                     int points = rs.getInt("points");
-                    scores.add(new Score(nick, points));
+                    scores.add(new ScoreDTO(nick, points));
                 }
             }
         } catch (SQLException e){
@@ -93,9 +92,9 @@ public class DbConnector implements ScoreStorageInterface {
     }
 
     @Override
-    public Score getScoreByName(String name){
+    public ScoreDTO getScoreByName(String name){
         // SELECT WHERE name ==
-        Score score = new Score();
+        ScoreDTO score = new ScoreDTO();
         try (Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM scores WHERE nick == ? ORDER BY  points DESC")){
 

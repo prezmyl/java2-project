@@ -1,15 +1,15 @@
 package cz.vsb.fei.project.storage;
 
-import cz.vsb.fei.project.data.Score;
+import cz.vsb.fei.project.data.ScoreDTO;
 
 import java.util.List;
 
 public interface ScoreStorageInterface {
     void init();
-    void insertScore(Score score);
+    void insertScore(ScoreDTO score);
 
-    List<Score> getAll();
-    List<Score> getTopScores(int number);
-    Score getScoreByName(String name);
+    List<ScoreDTO> getAll();
+    List<ScoreDTO> getTopScores(int number);
+    ScoreDTO getScoreByName(String name);
 
 }

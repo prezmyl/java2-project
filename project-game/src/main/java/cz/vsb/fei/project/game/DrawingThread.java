@@ -15,7 +15,7 @@ public class DrawingThread extends AnimationTimer {
     private final ArrayList<GameObject> gameObject = new ArrayList<>();
 	private final Player player;
 	private final GameStateObserver gameStateObserver;
-	private final ScoreManager scoreManager;
+	private final ScoreClient scoreClient;
 	private final HealthDisplay healthDisplay;
 	private long lastBulletTime = 0;
 	private long lastTime;
@@ -31,7 +31,7 @@ public class DrawingThread extends AnimationTimer {
 	public DrawingThread(Canvas canvas, GameSession gameSession, GameStateObserver gameStateObserver ) {
 		this.gc = canvas.getGraphicsContext2D();
 		this.player = gameSession.getPlayer();
-		this.scoreManager = gameSession.getScoreManager();
+		this.scoreClient = gameSession.getScoreClient();
 		this.gameStateObserver = gameStateObserver;
 		this.healthDisplay = new HealthDisplay(player.new Health(3));
 		this.gameSession = gameSession;
@@ -85,7 +85,7 @@ public class DrawingThread extends AnimationTimer {
 		// Vykreslení DrawAble
 		gameSession.getDrawables().forEach(obj -> obj.draw(gc));
 
-		gameStateObserver.onScoreUpdate(scoreManager.getScore());
+		gameStateObserver.onScoreUpdate(scoreClient.getScore());
 		gameStateObserver.onLivesUpdate(player.getHealth().getLives());
 
 		//gameSession.attemptSpawn();

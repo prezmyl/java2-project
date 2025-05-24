@@ -8,8 +8,8 @@
     <persistence-unit name="java2"
                       transaction-type="RESOURCE_LOCAL">
         <!-- pridani DTO tridy, tak kde jsou entity -->
-        <class>cz.vsb.fei.project.data.Score</class>
-        <class>cz.vsb.fei.project.data.GameSessionEntity</class>
+        <class>cz.vsb.fei.project.data.ScoreDTO</class>
+        <class>cz.vsb.fei.project.data.GameSessionDTO</class>
 
 
         <!-- If you are running in a production environment, add a managed data

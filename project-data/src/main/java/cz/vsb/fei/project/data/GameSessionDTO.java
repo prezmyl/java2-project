@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Data
-public class GameSessionEntity {
+public class GameSessionDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +19,5 @@ public class GameSessionEntity {
     private String name; //identifikace relace, muze byt jmeno hrace nebo neco
 
     @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Score> scores = new ArrayList<>();
+    private List<ScoreDTO> scores = new ArrayList<>();
 }

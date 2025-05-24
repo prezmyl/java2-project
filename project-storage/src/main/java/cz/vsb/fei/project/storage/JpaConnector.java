@@ -1,7 +1,7 @@
 package cz.vsb.fei.project.storage;
 
-import cz.vsb.fei.project.data.GameSessionEntity;
-import cz.vsb.fei.project.data.Score;
+import cz.vsb.fei.project.data.GameSessionDTO;
+import cz.vsb.fei.project.data.ScoreDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -23,14 +23,14 @@ public class JpaConnector implements ScoreStorageInterface {
     }
 
     @Override
-    public void insertScore(Score score) {
+    public void insertScore(ScoreDTO score) {
         EntityTransaction tx = em.getTransaction();
         try {
             if (!tx.isActive()) {
                 tx.begin();
             }
 
-            GameSessionEntity session = new GameSessionEntity();
+            GameSessionDTO session = new GameSessionDTO();
             session.setName(randomSessionName()); //pak random jmeno pres nejakou metodu
 
             score.setGameSession(session);
@@ -51,20 +51,20 @@ public class JpaConnector implements ScoreStorageInterface {
 
 
     @Override
-    public List<Score> getAll() {
-        return em.createQuery("SELECT s FROM Score s", Score.class).getResultList();
+    public List<ScoreDTO> getAll() {
+        return em.createQuery("SELECT s FROM ScoreDTO s", ScoreDTO.class).getResultList();
     }
 
     @Override
-    public List<Score> getTopScores(int number) {
-        return em.createQuery("SELECT s FROM Score s ORDER BY s.points DESC", Score.class)
+    public List<ScoreDTO> getTopScores(int number) {
+        return em.createQuery("SELECT s FROM ScoreDTO s ORDER BY s.points DESC", ScoreDTO.class)
                 .setMaxResults(number)
                 .getResultList();
     }
 
     @Override
-    public Score getScoreByName(String name) {
-        return em.createQuery("SELECT s FROM Score s WHERE s.nick = :name", Score.class)
+    public ScoreDTO getScoreByName(String name) {
+        return em.createQuery("SELECT s FROM ScoreDTO s WHERE s.nick = :name", ScoreDTO.class)
                 .setParameter("name", name)
                 .getResultStream()
                 .findFirst()

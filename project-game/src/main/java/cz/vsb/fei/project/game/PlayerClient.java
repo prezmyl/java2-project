@@ -2,7 +2,7 @@ package cz.vsb.fei.project.game;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import cz.vsb.fei.project.data.Player;
+import cz.vsb.fei.project.data.PlayerDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 
@@ -20,7 +20,7 @@ public class PlayerClient {
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public void getAll(Consumer<List<Player>> callback) {
+    public void getAll(Consumer<List<PlayerDTO>> callback) {
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(URI.create(BACKEND_URL))
                 .GET()
@@ -30,7 +30,7 @@ public class PlayerClient {
                 .thenApply(HttpResponse::body)
                 .thenApply(json -> {
                     try {
-                        return objectMapper.readValue(json, new TypeReference<List<Player>>(){});
+                        return objectMapper.readValue(json, new TypeReference<List<PlayerDTO>>(){});
                     } catch (Exception e) {
                         log.error("Error while loading pLayers form the server", e);
                         throw new CompletionException(e);
@@ -40,7 +40,7 @@ public class PlayerClient {
                 .exceptionally(ex -> { log.error("Error while loading pLayers form the server", ex); return null; });
     }
 
-    public void create(Player p, Consumer<Player> callback) {
+    public void create(PlayerDTO p, Consumer<PlayerDTO> callback) {
         try {
             String json = objectMapper.writeValueAsString(p);
             HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL))
@@ -52,7 +52,7 @@ public class PlayerClient {
                     .thenApply(HttpResponse::body)
                     .thenApply(body ->{
                         try {
-                            return objectMapper.readValue(body, Player.class);
+                            return objectMapper.readValue(body, PlayerDTO.class);
                         } catch (IOException e) {
                             log.error("Error while creating player on the server", e);
                             throw new UncheckedIOException(e);
@@ -69,7 +69,7 @@ public class PlayerClient {
     }
 
 
-    public void update(long id, Player p, Runnable onSuccess) {
+    public void update(long id, PlayerDTO p, Runnable onSuccess) {
         try {
             String json = objectMapper.writeValueAsString(p);
             HttpRequest req = HttpRequest.newBuilder()

@@ -1,8 +1,6 @@
 package cz.vsb.fei.project.game;
 
-import cz.vsb.fei.project.data.Score;
-import cz.vsb.fei.project.storage.ScoreStorageFactory;
-import cz.vsb.fei.project.storage.ScoreStorageInterface;
+import cz.vsb.fei.project.data.ScoreDTO;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -13,7 +11,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 
-import cz.vsb.fei.project.storage.FileManager;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
@@ -28,11 +25,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Log4j2
-public class ScoreManager {
+public class ScoreClient {
     private static final String BACKEND_URL = "http://localhost:8080/api/scores";
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -45,7 +41,7 @@ public class ScoreManager {
     private GraphicsContext gc;
 
     public void saveScore(){
-        Score scoreObj = new Score(this.score);
+        ScoreDTO scoreObj = new ScoreDTO(this.score);
         try {
             String json = objectMapper.writeValueAsString(scoreObj);
 
@@ -75,7 +71,7 @@ public class ScoreManager {
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenAccept(response -> {
                     try {
-                        List<Score> scores = objectMapper.readValue(response.body(), new TypeReference<>() {
+                        List<ScoreDTO> scores = objectMapper.readValue(response.body(), new TypeReference<>() {
                         });
                         scores.forEach(sc -> log.info("{}: Score: {}", sc.getNick(), sc.getPoints()));
                     } catch (IOException e) {
@@ -91,7 +87,7 @@ public class ScoreManager {
     }
 
 
-    public void getHighScores(Consumer<List<Score>> callback) {
+    public void getHighScores(Consumer<List<ScoreDTO>> callback) {
         HttpRequest rq = HttpRequest.newBuilder()
                 .uri(URI.create(BACKEND_URL))
                 .GET()
@@ -100,10 +96,10 @@ public class ScoreManager {
         client.sendAsync(rq, HttpResponse.BodyHandlers.ofString())
                 .thenAccept(rp -> {
                     try {
-                        List<Score> scores = objectMapper.readValue(rp.body(), new TypeReference<>() {
+                        List<ScoreDTO> scores = objectMapper.readValue(rp.body(), new TypeReference<>() {
                         });
-                        List<Score> topScores = scores.stream()
-                                .sorted(Comparator.comparingInt(Score::getPoints).reversed())
+                        List<ScoreDTO> topScores = scores.stream()
+                                .sorted(Comparator.comparingInt(ScoreDTO::getPoints).reversed())
                                 .limit(10)
                                 .collect(Collectors.toList());
 

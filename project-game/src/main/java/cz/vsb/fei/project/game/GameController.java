@@ -1,7 +1,6 @@
 package cz.vsb.fei.project.game;
 
 
-import cz.vsb.fei.project.data.Score;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -132,7 +131,7 @@ public class GameController implements GameStateObserver {
 
     @FXML
     private void displayHighScores() {
-        gameSession.getScoreManager().getHighScores(list -> {
+        gameSession.getScoreClient().getHighScores(list -> {
             //jump back from http thread to JavaFX thred
             Platform.runLater(() -> {
                 if (list.isEmpty()){
@@ -182,7 +181,7 @@ public class GameController implements GameStateObserver {
     }
 
     private void saveCurrentScore() {
-        gameSession.getScoreManager().saveScore();
+        gameSession.getScoreClient().saveScore();
         showAlert("Score saved successfully!");
     }
 
