@@ -42,8 +42,9 @@
 │       │   │       └── fei
 │       │   │           └── project
 │       │   │               └── data
-│       │   │                   ├── GameSessionEntity.class
-│       │   │                   └── Score.class
+│       │   │                   ├── GameSessionDTO.class
+│       │   │                   ├── PlayerDTO.class
+│       │   │                   └── ScoreDTO.class
 │       │   ├── log4j2.xml
 │       │   └── module-info.class
 │       ├── generated-sources
@@ -186,6 +187,8 @@
 │       │   │                   ├── GameObject.class
 │       │   │                   ├── GameSession$1.class
 │       │   │                   ├── GameSession.class
+│       │   │                   ├── GameSessionClient$1.class
+│       │   │                   ├── GameSessionClient.class
 │       │   │                   ├── GameSettings$GameSettingsBuilder.class
 │       │   │                   ├── GameSettings.class
 │       │   │                   ├── GameStateObserver.class
@@ -196,10 +199,12 @@
 │       │   │                   ├── menuWindow.fxml
 │       │   │                   ├── Player$Health.class
 │       │   │                   ├── Player.class
+│       │   │                   ├── PlayerClient$1.class
+│       │   │                   ├── PlayerClient.class
 │       │   │                   ├── Routines.class
-│       │   │                   ├── ScoreManager$1.class
-│       │   │                   ├── ScoreManager$2.class
-│       │   │                   ├── ScoreManager.class
+│       │   │                   ├── ScoreClient$1.class
+│       │   │                   ├── ScoreClient$2.class
+│       │   │                   ├── ScoreClient.class
 │       │   │                   ├── ScoreManagerOldJPAmodul.class
 │       │   │                   └── Ufo.class
 │       │   ├── log4j2.xml
@@ -397,4 +402,4 @@
 ├── url_gitHub_project.txt
 └── Zadani_projektu_a_jednotlivych_ukolu_pro_projekt.txt
 
-150 directories, 248 files
+150 directories, 253 files
