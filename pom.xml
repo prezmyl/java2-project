@@ -32,6 +32,12 @@
 	<!-- Zde definujeme verze knihoven, které budou dědit podprojekty -->
 	<dependencyManagement>
 		<dependencies>
+			<!-- Závislost Jackson - kvuli ObjectMapper -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.18.3</version>
+			</dependency>
 			<!-- JUnit Jupiter (testovavni) -->
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>

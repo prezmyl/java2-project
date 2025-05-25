@@ -112,6 +112,10 @@ public class GameController implements GameStateObserver {
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setNickname("Player" + UUID.randomUUID().toString().substring(0, 8));
         playerClient.create(playerDTO, createdPlayer -> {
+            System.out.println("RESPONSE PlayerDTO from BE: " + createdPlayer);
+            System.out.println("PlayerDTO.id = " + createdPlayer.getId());
+            System.out.println("PlayerDTO.nickname = " + createdPlayer.getNickname());
+
             Long playerId = createdPlayer.getId();
 
             // Ověř, že playerId není null!

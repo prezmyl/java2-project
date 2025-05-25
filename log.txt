@@ -1,123 +1,61 @@
-/usr/lib/jvm/java-21-openjdk/bin/java -javaagent:/home/xpolas/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=34345 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/xpolas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/xpolas/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/xpolas/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/xpolas/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/xpolas/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/xpolas/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/xpolas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/xpolas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/home/xpolas/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/home/xpolas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/xpolas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/xpolas/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/xpolas/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23.jar -p /home/xpolas/.m2/repository/cz/vsb/fei/project-storage/1.0-SNAPSHOT/project-storage-1.0-SNAPSHOT.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/home/xpolas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/xpolas/.m2/repository/org/hibernate/orm/hibernate-core/6.6.11.Final/hibernate-core-6.6.11.Final.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23-linux.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/xpolas/banska/java2/project/project-game/target/classes:/home/xpolas/banska/java2/project/project-data/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23-linux.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/xpolas/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.3/jackson-databind-2.18.3.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23-linux.jar -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
-12:43:35.817 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
-	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
-12:43:35.825 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
-java.util.concurrent.CompletionException: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315) ~[?:?]
-	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320) ~[?:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:649) ~[?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
-Caused by: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:57) ~[classes/:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
-	... 9 more
-Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
-	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
-	... 9 more
-12:44:02.485 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
-	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
-12:44:02.487 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
-java.util.concurrent.CompletionException: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315) ~[?:?]
-	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320) ~[?:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:649) ~[?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
-	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
-Caused by: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:57) ~[classes/:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
-	... 9 more
-Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
-	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
-	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
-	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
-	... 9 more
+/usr/lib/jvm/java-21-openjdk/bin/java -javaagent:/home/xpolas/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=36623 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/xpolas/.m2/repository/cz/vsb/fei/project-storage/1.0-SNAPSHOT/project-storage-1.0-SNAPSHOT.jar:/home/xpolas/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/xpolas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/xpolas/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/xpolas/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/xpolas/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/xpolas/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/xpolas/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/xpolas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/xpolas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/home/xpolas/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/home/xpolas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/xpolas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/xpolas/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/xpolas/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23.jar -p /home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23-linux.jar:/home/xpolas/.m2/repository/org/hibernate/orm/hibernate-core/6.6.11.Final/hibernate-core-6.6.11.Final.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/home/xpolas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/xpolas/banska/java2/project/project-game/target/classes:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.3/jackson-databind-2.18.3.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/xpolas/banska/java2/project/project-data/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23-linux.jar -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
+20:20:16.686 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.PlayerClient - Error while creating player on the server
+java.util.concurrent.CompletionException: java.net.ConnectException
+	at java.base/java.util.concurrent.CompletableFuture.encodeRelay(CompletableFuture.java:368) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeRelay(CompletableFuture.java:377) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1152) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1041) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	... 5 more
+Caused by: java.nio.channels.ClosedChannelException
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874) ~[?:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	... 5 more
+20:20:16.686 [ForkJoinPool.commonPool-worker-2] ERROR cz.vsb.fei.project.game.PlayerClient - Error while creating player on the server
+java.util.concurrent.CompletionException: java.net.ConnectException
+	at java.base/java.util.concurrent.CompletableFuture.encodeRelay(CompletableFuture.java:368) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeRelay(CompletableFuture.java:377) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1152) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1041) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	... 5 more
+Caused by: java.nio.channels.ClosedChannelException
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874) ~[?:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	... 5 more

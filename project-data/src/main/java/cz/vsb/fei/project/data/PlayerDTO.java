@@ -7,19 +7,33 @@ import lombok.*;
 import java.util.List;
 
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
+
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ToString
+
 public class PlayerDTO {
     private Long id;
     private String nickname;
 
-    // Když potřebuješ (volitelné)
-    //private String firstName;
-    //private String lastName;
+    public PlayerDTO() {}
 
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getNickname() {
+        return nickname;
+    }
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
+    @Override
+    public String toString() {
+        return "PlayerDTO(id=" + id + ", nickname=" + nickname + ")";
+    }
 }
+

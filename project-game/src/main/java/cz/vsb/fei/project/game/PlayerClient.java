@@ -51,6 +51,7 @@ public class PlayerClient {
             client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
                     .thenApply(HttpResponse::body)
                     .thenApply(body ->{
+                        System.out.println("RAW BODY FROM BE: " + body);
                         try {
                             return objectMapper.readValue(body, PlayerDTO.class);
                         } catch (IOException e) {
