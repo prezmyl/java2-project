@@ -114,11 +114,23 @@ public class GameController implements GameStateObserver {
         playerClient.create(playerDTO, createdPlayer -> {
             Long playerId = createdPlayer.getId();
 
+            // Ověř, že playerId není null!
+            if (playerId == null) {
+                showAlert("Chyba: Hráč nebyl na backendu vytvořen!");
+                return;
+            }
+
             // 2. Vytvoř novou session
             GameSessionDTO sessionDTO = new GameSessionDTO();
             sessionDTO.setGameName("Session " + UUID.randomUUID().toString().substring(0, 8));
             gameSessionClient.create(sessionDTO, createdSession -> {
                 Long sessionId = createdSession.getId();
+
+                // Ověř, že sessionId není null!
+                if (sessionId == null) {
+                    showAlert("Chyba: Herní session nebyla na backendu vytvořena!");
+                    return;
+                }
 
                 // 3. Počkej, až obě id budou hotové, a pak vytvoř ScoreDTO a odešli na BE
                 ScoreDTO dto = new ScoreDTO();
@@ -132,6 +144,7 @@ public class GameController implements GameStateObserver {
             });
         });
     }
+
 /*
 
     public void saveCurrentScoreToBE() {
