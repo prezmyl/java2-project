@@ -1,5 +1,6 @@
 package cz.vsb.fei.project.game;
 
+import cz.vsb.fei.project.data.GameSessionDTO;
 import javafx.scene.Scene;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,8 +15,6 @@ import java.util.stream.Stream;
 public class GameSession {
     @Getter
     private final Player player;
-    @Getter
-    private final ScoreClient scoreClient;
 
     @Getter
     private final ScoreManager scoreManager;
@@ -53,7 +52,7 @@ public class GameSession {
         this.enemies = new ArrayList<>();
         this.barricades = new ArrayList<>();
         this.bullets = new ArrayList<>();
-        this.scoreClient = new ScoreClient();
+        //this.scoreClient = new ScoreClient();
         this.scoreManager = new ScoreManager();
         this.ground = new Ground();
 

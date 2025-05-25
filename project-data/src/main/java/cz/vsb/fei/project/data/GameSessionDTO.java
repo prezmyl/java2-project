@@ -1,23 +1,22 @@
 package cz.vsb.fei.project.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
+@Getter
+@Setter
 @NoArgsConstructor
-@Data
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GameSessionDTO {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String gameName;
+    private LocalDateTime date; // nebo String, pokud tak máš v entitě
 
-    private String name; //identifikace relace, muze byt jmeno hrace nebo neco
-
-    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ScoreDTO> scores = new ArrayList<>();
+    // Pokud chceš mít detailní výpis skóre k session (ne nutné pro všechno)
+    private List<ScoreDTO> scores;
 }

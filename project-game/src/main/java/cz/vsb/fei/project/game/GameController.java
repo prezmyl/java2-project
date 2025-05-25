@@ -1,6 +1,8 @@
 package cz.vsb.fei.project.game;
 
 
+import cz.vsb.fei.project.data.GameSessionDTO;
+import cz.vsb.fei.project.data.PlayerDTO;
 import cz.vsb.fei.project.data.ScoreDTO;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -10,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
@@ -22,6 +25,15 @@ public class GameController implements GameStateObserver {
     @FXML
     private Label livesLabel;
 
+    @Getter
+    private final PlayerClient playerClient;
+
+    @Getter
+    private final GameSessionClient gameSessionClient;
+
+    @Getter
+    private final ScoreClient scoreClient;
+
     private GameSession gameSession;
     private AnimationTimer inputHandler;
     private final Map<KeyCode, Runnable> keyAction = new HashMap<>();
@@ -29,6 +41,9 @@ public class GameController implements GameStateObserver {
 
     public GameController() {
         // Bezparametrický konstruktor pro FXML
+        this.playerClient = new PlayerClient();
+        this.gameSessionClient = new GameSessionClient();
+        this.scoreClient = new ScoreClient();
     }
 
     public void setGameSession(GameSession gameSession, DrawingThread drawingThread) {
@@ -90,7 +105,36 @@ public class GameController implements GameStateObserver {
         }
     }
 
-    private void saveCurrentScoreToBE() {
+    public void saveCurrentScoreToBE() {
+        int score = gameSession.getScoreManager().getCurrentScore();
+
+        // 1. Vytvoř nového hráče (náhodný nick)
+        PlayerDTO playerDTO = new PlayerDTO();
+        playerDTO.setNickname("Player" + UUID.randomUUID().toString().substring(0, 8));
+        playerClient.create(playerDTO, createdPlayer -> {
+            Long playerId = createdPlayer.getId();
+
+            // 2. Vytvoř novou session
+            GameSessionDTO sessionDTO = new GameSessionDTO();
+            sessionDTO.setGameName("Session " + UUID.randomUUID().toString().substring(0, 8));
+            gameSessionClient.create(sessionDTO, createdSession -> {
+                Long sessionId = createdSession.getId();
+
+                // 3. Počkej, až obě id budou hotové, a pak vytvoř ScoreDTO a odešli na BE
+                ScoreDTO dto = new ScoreDTO();
+                dto.setPoints(score);
+                dto.setPlayerId(playerId);
+                dto.setGameSessionId(sessionId);
+
+                scoreClient.create(dto, response -> {
+                    showAlert("Score: " + score + " saved with random player and session!");
+                });
+            });
+        });
+    }
+/*
+
+    public void saveCurrentScoreToBE() {
         //tady propoji logiku hru, tzn jeji stavy ulozim do DTO wrapper trid pro prenos
         int score = gameSession.getScoreManager().getCurrentScore();
 
@@ -108,7 +152,7 @@ public class GameController implements GameStateObserver {
             showAlert("Score: " + score + " saved succesfully");
         });
     }
-
+*/
 
     @Override
     public void onScoreUpdate(int newScore) {
@@ -149,7 +193,7 @@ public class GameController implements GameStateObserver {
 
     @FXML
     private void displayHighScores() {
-        gameSession.getScoreClient().getAll(list -> {
+        scoreClient.getAll(list -> {
             //jump back from http thread to JavaFX thred
             Platform.runLater(() -> {
                 if (list.isEmpty()){

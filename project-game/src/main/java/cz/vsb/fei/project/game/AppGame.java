@@ -6,16 +6,21 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 @Log4j2
+@Getter
+@Setter
 public class AppGame extends Application {
 
 	private DrawingThread drawingThread;
 	private GameSession gameSession;
+	private GameController gameController;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -56,16 +61,16 @@ public class AppGame extends Application {
 
 
 			Scene gameScene = new Scene(gameRoot, GameSettings.getInstance().getGameWidth(), GameSettings.getInstance().getGameHeight());
-			gameSession = new GameSession(gameScene);
+			this.gameSession = new GameSession(gameScene);
 
-			GameController gameController = loader.getController();
+			this.gameController = loader.getController();
 
 			Canvas canvas = new Canvas(GameSettings.getInstance().getGameWidth(), GameSettings.getInstance().getGameHeight());
 			gameRoot.getChildren().add(1, canvas);
 			canvas.setFocusTraversable(false);
 
-			drawingThread = new DrawingThread(canvas, gameSession, gameController);
-			gameController.setGameSession(gameSession, drawingThread);
+			this.drawingThread = new DrawingThread(canvas, gameSession, gameController);
+			this.gameController.setGameSession(gameSession, drawingThread);
 
 
 			primaryStage.setScene(gameScene);
@@ -73,7 +78,7 @@ public class AppGame extends Application {
 
 			canvas.requestFocus();
 
-			drawingThread.start();		
+			this.drawingThread.start();
 
 		} catch (Exception e) {
 			log.error("Error during start of a game.", e);
@@ -82,8 +87,8 @@ public class AppGame extends Application {
 
 	@Override
 	public void stop() throws Exception {
-		if (gameSession != null) {
-			gameSession.getScoreClient().saveScore();
+		if (gameSession != null && gameController != null) {
+			this.gameController.saveCurrentScoreToBE();
 		}
 		if (drawingThread != null) {
 			drawingThread.stop();
