@@ -1,6 +1,7 @@
 package cz.vsb.fei.project.game;
 
 
+import cz.vsb.fei.project.data.ScoreDTO;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -39,7 +40,7 @@ public class GameController implements GameStateObserver {
         keyAction.put(KeyCode.RIGHT, () -> player.moveRight(drawingThread.getDeltaT()));
         keyAction.put(KeyCode.SPACE, () -> player.shoot(gameSession, drawingThread.getCurrentNow()));
         keyAction.put(KeyCode.H, this::displayHighScores);
-        keyAction.put(KeyCode.J, this::saveCurrentScore);
+        keyAction.put(KeyCode.J, this::saveCurrentScoreToBE);
 
         // continuous input handling
         Scene gameScene = gameSession.getScene();
@@ -89,7 +90,24 @@ public class GameController implements GameStateObserver {
         }
     }
 
+    private void saveCurrentScoreToBE() {
+        //tady propoji logiku hru, tzn jeji stavy ulozim do DTO wrapper trid pro prenos
+        int score = gameSession.getScoreManager().getCurrentScore();
 
+        //pokud existuje playerId a SessionId na FE
+        //Long playerId = gameSession.getPlayer() != null ? gameSession.getPlayer().getId() : null
+        //Long sessionId = gameSession.getId();
+
+        ScoreDTO dto = new ScoreDTO();
+        dto.setPoints(score);
+        //dto.setPlayerId(playerId);
+        //dto.setGameSessionId(sessionId);
+
+        //tady REST endpoints pouziju ScoreClient(REST api) svoje metody pro prenos na BE
+        gameSession.getScoreClient().create(dto, response ->{
+            showAlert("Score: " + score + " saved succesfully");
+        });
+    }
 
 
     @Override
@@ -111,7 +129,7 @@ public class GameController implements GameStateObserver {
             alert.setHeaderText("invasion succeed");
             alert.setContentText("You lost and the planet Earth is lost too");
             alert.showAndWait();
-            saveCurrentScore();
+            saveCurrentScoreToBE();
         });
 
     }
@@ -125,13 +143,13 @@ public class GameController implements GameStateObserver {
             alert.setHeaderText("The invasion has been stopped ");
             alert.setContentText("All enemies have been destroyed and the planet Earth is saved");
             alert.showAndWait();
-            saveCurrentScore();
+            saveCurrentScoreToBE();
         });
     }
 
     @FXML
     private void displayHighScores() {
-        gameSession.getScoreClient().getHighScores(list -> {
+        gameSession.getScoreClient().getAll(list -> {
             //jump back from http thread to JavaFX thred
             Platform.runLater(() -> {
                 if (list.isEmpty()){
@@ -139,23 +157,19 @@ public class GameController implements GameStateObserver {
                 } else {
                     StringBuilder sb = new StringBuilder("Top High Scores:\n");
                     for (int i = 0; i < list.size(); i++) {
-                        sb.append(i + 1).append(". ").append(list.get(i)).append("\n");
+                        ScoreDTO score = list.get(i);
+                        sb.append(i + 1)
+                                .append(". ")
+                                .append(score.getPlayerNickname() != null ? score.getPlayerNickname() : "Unknown")
+                                .append(" - ")
+                                .append(score.getPoints())
+                                .append("\n");
                     }
                     showAlert(sb.toString());
                 }
             });
         });
 
-      /*  List<Score> highScores = gameSession.getScoreManager().getHighScores();
-        if (highScores.isEmpty()) {
-            showAlert("No high scores available.");
-        } else {
-            StringBuilder sb = new StringBuilder("Top High Scores:\n");
-            for (int i = 0; i < highScores.size(); i++) {
-                sb.append(i + 1).append(". ").append(highScores.get(i)).append("\n");
-            }
-            showAlert(sb.toString());
-        }*/
     }
 
     @FXML
@@ -169,7 +183,7 @@ public class GameController implements GameStateObserver {
 
     @FXML
     public void handleSaveScoreButton() {
-        saveCurrentScore();
+        saveCurrentScoreToBE();
         log.info("Save Score button clicked");
         requestFocusToCanvas();
     }
@@ -180,10 +194,10 @@ public class GameController implements GameStateObserver {
         }
     }
 
-    private void saveCurrentScore() {
+/*    private void saveCurrentScore() {
         gameSession.getScoreClient().saveScore();
         showAlert("Score saved successfully!");
-    }
+    }*/
 
     private void showAlert(String message) {
         Platform.runLater(() -> {

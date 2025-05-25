@@ -1,11 +1,13 @@
 package cz.vsb.fei.project.game;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import cz.vsb.fei.project.data.PlayerDTO;
 import cz.vsb.fei.project.data.ScoreDTO;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -25,6 +27,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletionException;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -62,6 +65,26 @@ public class ScoreClient {
         } catch (JsonProcessingException e) {
             log.error("Error while score JSON serialization ", e);
         }
+    }
+
+    public void getAll(Consumer<List<ScoreDTO>> callback){
+        HttpRequest req = HttpRequest.newBuilder()
+                .uri(URI.create(BACKEND_URL))
+                .GET()
+                .build();
+
+        client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(json -> {
+                    try {
+                        return objectMapper.readValue(json, new TypeReference<List<ScoreDTO>>(){});
+                    } catch (Exception e) {
+                        log.error("Error while loading score form the server", e);
+                        throw new CompletionException(e);
+                    }
+                })
+                .thenAccept(callback)
+                .exceptionally(ex -> { log.error("Error while loading score form the server", ex); return null; });
     }
 
     public void saveScore(){

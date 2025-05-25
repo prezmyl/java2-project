@@ -1,575 +1,123 @@
-/usr/lib/jvm/java-21-openjdk/bin/java -javaagent:/home/xpolas/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=46829 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/xpolas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/xpolas/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/xpolas/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/xpolas/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/xpolas/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/xpolas/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/xpolas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/xpolas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/home/xpolas/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/home/xpolas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/xpolas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/xpolas/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/xpolas/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23.jar -p /home/xpolas/banska/java2/project/project-data/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23-linux.jar:/home/xpolas/banska/java2/project/project-storage/target/classes:/home/xpolas/banska/java2/project/project-game/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23-linux.jar:/home/xpolas/.m2/repository/org/hibernate/orm/hibernate-core/6.6.11.Final/hibernate-core-6.6.11.Final.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23-linux.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/xpolas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/xpolas/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
-23:17:06.282 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Column "GAME_SESSION_ID" not found; SQL statement:
-insert into scores (game_session_id,nick,points,id) values (?,?,?,default) [42122-224]
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene$MouseHandler.process(Scene.java:3987)
-	at javafx.graphics@23/javafx.scene.Scene.processMouseEvent(Scene.java:1893)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2711)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleMouseEvent(View.java:560)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyMouse(View.java:946)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 46 more
-Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement [Column "GAME_SESSION_ID" not found; SQL statement:
-insert into scores (game_session_id,nick,points,id) values (?,?,?,default) [42122-224]] [insert into scores (game_session_id,nick,points,id) values (?,?,?,default)]
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.internal.MutationStatementPreparerImpl$StatementPreparationTemplate.prepareStatement(MutationStatementPreparerImpl.java:117)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.internal.MutationStatementPreparerImpl.prepareStatement(MutationStatementPreparerImpl.java:63)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.id.insert.GetGeneratedKeysDelegate.prepareStatement(GetGeneratedKeysDelegate.java:95)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.mutation.internal.ModelMutationHelper.delegateStatementPreparation(ModelMutationHelper.java:131)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.mutation.internal.ModelMutationHelper.lambda$standardPreparation$0(ModelMutationHelper.java:121)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.mutation.internal.PreparedStatementDetailsStandard.resolveStatement(PreparedStatementDetailsStandard.java:87)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:113)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:682)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:293)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:274)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:324)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:393)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:307)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:223)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:136)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:177)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:95)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:79)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:138)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionImpl.persist(SessionImpl.java:751)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.spi.CascadingActions$7.cascade(CascadingActions.java:295)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.spi.CascadingActions$7.cascade(CascadingActions.java:285)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeToOne(Cascade.java:570)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:492)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:253)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeCollectionElements(Cascade.java:604)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeCollection(Cascade.java:534)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeAssociation(Cascade.java:495)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascadeProperty(Cascade.java:253)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.internal.Cascade.cascade(Cascade.java:192)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.cascadeAfterSave(AbstractSaveEventListener.java:520)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:319)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:223)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:136)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:177)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:95)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:79)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:761)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.internal.SessionImpl.persist(SessionImpl.java:745)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:32)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 53 more
-Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "GAME_SESSION_ID" not found; SQL statement:
-insert into scores (game_session_id,nick,points,id) values (?,?,?,default) [42122-224]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
-	at org.h2.message.DbException.get(DbException.java:223)
-	at org.h2.message.DbException.get(DbException.java:199)
-	at org.h2.table.Table.getColumn(Table.java:759)
-	at org.h2.command.Parser.parseColumn(Parser.java:1190)
-	at org.h2.command.Parser.parseColumnList(Parser.java:1175)
-	at org.h2.command.Parser.parseInsert(Parser.java:1549)
-	at org.h2.command.Parser.parsePrepared(Parser.java:719)
-	at org.h2.command.Parser.parse(Parser.java:592)
-	at org.h2.command.Parser.parse(Parser.java:564)
-	at org.h2.command.Parser.prepareCommand(Parser.java:483)
-	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
-	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
-	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
-	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
-	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:1094)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.internal.MutationStatementPreparerImpl$2.doPrepare(MutationStatementPreparerImpl.java:61)
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.jdbc.internal.MutationStatementPreparerImpl$StatementPreparationTemplate.prepareStatement(MutationStatementPreparerImpl.java:106)
-	... 105 more
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.keyReleased(ButtonBehavior.java:163)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene.processKeyEvent(Scene.java:2197)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2718)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleKeyEvent(View.java:551)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyKey(View.java:975)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 45 more
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 52 more
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.keyReleased(ButtonBehavior.java:163)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene.processKeyEvent(Scene.java:2197)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2718)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleKeyEvent(View.java:551)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyKey(View.java:975)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 45 more
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 52 more
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.keyReleased(ButtonBehavior.java:163)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene.processKeyEvent(Scene.java:2197)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2718)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleKeyEvent(View.java:551)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyKey(View.java:975)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 45 more
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 52 more
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.keyReleased(ButtonBehavior.java:163)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene.processKeyEvent(Scene.java:2197)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2718)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleKeyEvent(View.java:551)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyKey(View.java:975)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 45 more
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 52 more
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.keyReleased(ButtonBehavior.java:163)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene.processKeyEvent(Scene.java:2197)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2718)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleKeyEvent(View.java:551)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyKey(View.java:975)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 45 more
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 52 more
-Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1863)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1731)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Node.fireEvent(Node.java:8963)
-	at javafx.controls@23/javafx.scene.control.Button.fire(Button.java:203)
-	at javafx.controls@23/com.sun.javafx.scene.control.behavior.ButtonBehavior.keyReleased(ButtonBehavior.java:163)
-	at javafx.controls@23/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
-	at javafx.base@23/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
-	at javafx.base@23/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at javafx.base@23/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at javafx.base@23/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.base@23/javafx.event.Event.fireEvent(Event.java:199)
-	at javafx.graphics@23/javafx.scene.Scene.processKeyEvent(Scene.java:2197)
-	at javafx.graphics@23/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2718)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
-	at javafx.graphics@23/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
-	at javafx.graphics@23/com.sun.glass.ui.View.handleKeyEvent(View.java:551)
-	at javafx.graphics@23/com.sun.glass.ui.View.notifyKey(View.java:975)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.base@23/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
-	at javafx.fxml@23/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
-	at javafx.fxml@23/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1860)
-	... 45 more
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.handleSaveScoreButton(GameController.java:158)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	... 52 more
-Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.saveCurrentScore(GameController.java:170)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.GameController.lambda$onGameOver$5(GameController.java:115)
-	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
-	at javafx.graphics@23/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Exception in Application stop method
-java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at javafx.graphics@23/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
-	at javafx.graphics@23/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1149)
-Caused by: java.lang.RuntimeException: Exception in Application stop method
-	at javafx.graphics@23/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:898)
-	at javafx.graphics@23/com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.IllegalStateException: Transaction already active
-	at org.hibernate.orm.core@6.6.11.Final/org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:74)
-	at cz.vsb.fei.project.storage@1.0-SNAPSHOT/cz.vsb.fei.project.storage.JpaConnector.insertScore(JpaConnector.java:26)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.ScoreClient.saveCurrentScore(ScoreManager.java:50)
-	at cz.vsb.fei.project.game@1.0-SNAPSHOT/cz.vsb.fei.project.game.AppGame.stop(AppGame.java:76)
-	at javafx.graphics@23/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$10(LauncherImpl.java:858)
-	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:483)
-	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-	at javafx.graphics@23/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
-	at javafx.graphics@23/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
-	at javafx.graphics@23/com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$10(GtkApplication.java:264)
-	... 1 more
-Exception running application cz.vsb.fei.project.game.AppGame
-
-Process finished with exit code 1
+/usr/lib/jvm/java-21-openjdk/bin/java -javaagent:/home/xpolas/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=34345 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/xpolas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/xpolas/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/xpolas/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/home/xpolas/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/xpolas/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/xpolas/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/home/xpolas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/xpolas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/home/xpolas/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/home/xpolas/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/home/xpolas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/xpolas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/xpolas/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/xpolas/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23.jar -p /home/xpolas/.m2/repository/cz/vsb/fei/project-storage/1.0-SNAPSHOT/project-storage-1.0-SNAPSHOT.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/home/xpolas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/xpolas/.m2/repository/org/hibernate/orm/hibernate-core/6.6.11.Final/hibernate-core-6.6.11.Final.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-graphics/23/javafx-graphics-23-linux.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-fxml/23/javafx-fxml-23-linux.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/xpolas/banska/java2/project/project-game/target/classes:/home/xpolas/banska/java2/project/project-data/target/classes:/home/xpolas/.m2/repository/org/openjfx/javafx-base/23/javafx-base-23-linux.jar:/home/xpolas/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/xpolas/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/xpolas/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.3/jackson-databind-2.18.3.jar:/home/xpolas/.m2/repository/org/openjfx/javafx-controls/23/javafx-controls-23-linux.jar -m cz.vsb.fei.project.game/cz.vsb.fei.project.game.AppGame
+12:43:35.817 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
+	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
+12:43:35.825 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
+java.util.concurrent.CompletionException: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:649) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
+Caused by: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:57) ~[classes/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
+	... 9 more
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
+	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
+	... 9 more
+12:44:02.485 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
+	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
+12:44:02.487 [ForkJoinPool.commonPool-worker-1] ERROR cz.vsb.fei.project.game.ScoreClient - Error while creating score on the server
+java.util.concurrent.CompletionException: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:649) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:614) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:844) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
+Caused by: java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:57) ~[classes/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
+	... 9 more
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "timestamp" (class cz.vsb.fei.project.data.ScoreDTO), not marked as ignorable (6 known properties: "points", "id", "playerId", "playerNickname", "gameSessionId", "gameSessionName"])
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 15] (through reference chain: cz.vsb.fei.project.data.ScoreDTO["timestamp"])
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:1153) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:2245) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1821) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1799) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:316) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4931) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3868) ~[jackson-databind-2.18.3.jar:?]
+	at com.fasterxml.jackson.databind@2.18.3/com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3836) ~[jackson-databind-2.18.3.jar:?]
+	at cz.vsb.fei.project.game/cz.vsb.fei.project.game.ScoreClient.lambda$create$0(ScoreClient.java:54) ~[classes/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:646) ~[?:?]
+	... 9 more
