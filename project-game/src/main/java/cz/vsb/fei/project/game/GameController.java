@@ -143,6 +143,20 @@ public class GameController implements GameStateObserver {
                 });
             });
         });
+
+        // Tohle je v GameControlleru nebo MenuControlleru
+        playerClient.create(playerDTO, createdPlayer -> {
+            // Tady je ten správný výpis:
+            System.out.println("RESPONSE PlayerDTO from BE: " + createdPlayer);
+            Long playerId = createdPlayer.getId();
+            if (playerId == null) {
+                showAlert("Chyba: Hráč nebyl na backendu vytvořen!");
+                return;
+            }
+
+            // ... pokračuješ v logice (třeba vytvoříš session, uložíš score, ...)
+        });
+
     }
 
 /*

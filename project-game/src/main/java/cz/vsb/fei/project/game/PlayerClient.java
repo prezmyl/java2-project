@@ -66,6 +66,9 @@ public class PlayerClient {
         } catch (JacksonException e) {
             log.error("Error while creating player on the server", e);
         }
+
+
+
     }
 
 
