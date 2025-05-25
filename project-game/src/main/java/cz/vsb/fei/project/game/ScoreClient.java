@@ -88,5 +88,23 @@ public class ScoreClient {
     }
 
 
+    public void deleteScore(Long id, Runnable onSuccess, Consumer<Throwable> onError) {
+        HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL + "/" + id))
+                .DELETE()
+                .build();
+
+        client.sendAsync(req, HttpResponse.BodyHandlers.discarding())
+                .thenAccept(response -> {
+                    if (response.statusCode() == 204) {
+                        onSuccess.run();
+                    } else {
+                        onError.accept(new Exception("Delete failed with code: " + response.statusCode()));
+                    }
+                })
+                .exceptionally(ex -> {
+                    onError.accept(ex);
+                    return null;
+                });
+    }
 
 }

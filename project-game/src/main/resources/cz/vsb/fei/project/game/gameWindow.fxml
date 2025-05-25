@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.canvas.Canvas?>
 
+<?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="cz.vsb.fei.project.game.GameController">
     <!-- Pozadí hry -->
     <ImageView fitWidth="800" fitHeight="400" preserveRatio="false" pickOnBounds="true">
@@ -22,6 +23,11 @@
     <Label fx:id="livesLabel" layoutX="700" layoutY="30" text="Lives: 3" style="-fx-text-fill: white;" />
 
     <!-- Tlačítka umístěná na stranách -->
-    <Button fx:id="highScoresButton" text="High Scores" onAction="#handleHighScoresButton" layoutX="10" layoutY="20" styleClass="game-button"/>
-    <Button fx:id="saveScoreButton" text="Save Score" onAction="#handleSaveScoreButton" layoutX="10" layoutY="60" styleClass="game-button"/>
+    <!-- Tlačítka ve svislém VBoxu v levém horním rohu -->
+    <VBox layoutX="10" layoutY="20" spacing="16">
+        <Button fx:id="deleteScoreButton" text="Delete first score" onAction="#handleDeleteFirstScore"/>
+        <Button fx:id="highScoresButton" text="High Scores" onAction="#handleHighScoresButton" styleClass="game-button"/>
+        <Button fx:id="saveScoreButton" text="Save Score" onAction="#handleSaveScoreButton" styleClass="game-button"/>
+    </VBox>
+
 </AnchorPane>

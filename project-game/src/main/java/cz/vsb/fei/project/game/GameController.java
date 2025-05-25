@@ -108,7 +108,7 @@ public class GameController implements GameStateObserver {
     public void saveCurrentScoreToBE() {
         int score = gameSession.getScoreManager().getCurrentScore();
 
-        // 1. Vytvoř nového hráče (náhodný nick)
+        // 1. vytovorim noveho hrace (nahodny nick ted)
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setNickname("Player" + UUID.randomUUID().toString().substring(0, 8));
         playerClient.create(playerDTO, createdPlayer -> {
@@ -118,25 +118,25 @@ public class GameController implements GameStateObserver {
 
             Long playerId = createdPlayer.getId();
 
-            // Ověř, že playerId není null!
+            // Overeni ze id neni null!
             if (playerId == null) {
                 showAlert("Chyba: Hráč nebyl na backendu vytvořen!");
                 return;
             }
 
-            // 2. Vytvoř novou session
+            // 2. Vytvorim novo session
             GameSessionDTO sessionDTO = new GameSessionDTO();
             sessionDTO.setGameName("Session " + UUID.randomUUID().toString().substring(0, 8));
             gameSessionClient.create(sessionDTO, createdSession -> {
                 Long sessionId = createdSession.getId();
 
-                // Ověř, že sessionId není null!
+                // overim not null
                 if (sessionId == null) {
                     showAlert("Chyba: Herní session nebyla na backendu vytvořena!");
                     return;
                 }
 
-                // 3. Počkej, až obě id budou hotové, a pak vytvoř ScoreDTO a odešli na BE
+                // 3. Pockam azz obe id hotove, a pak vytvor ScoreDTO a odesli na BE
                 ScoreDTO dto = new ScoreDTO();
                 dto.setPoints(score);
                 dto.setPlayerId(playerId);
@@ -148,9 +148,9 @@ public class GameController implements GameStateObserver {
             });
         });
 
-        // Tohle je v GameControlleru nebo MenuControlleru
+
         playerClient.create(playerDTO, createdPlayer -> {
-            // Tady je ten správný výpis:
+
             System.out.println("RESPONSE PlayerDTO from BE: " + createdPlayer);
             Long playerId = createdPlayer.getId();
             if (playerId == null) {
@@ -158,32 +158,11 @@ public class GameController implements GameStateObserver {
                 return;
             }
 
-            // ... pokračuješ v logice (třeba vytvoříš session, uložíš score, ...)
+
         });
 
     }
 
-/*
-
-    public void saveCurrentScoreToBE() {
-        //tady propoji logiku hru, tzn jeji stavy ulozim do DTO wrapper trid pro prenos
-        int score = gameSession.getScoreManager().getCurrentScore();
-
-        //pokud existuje playerId a SessionId na FE
-        //Long playerId = gameSession.getPlayer() != null ? gameSession.getPlayer().getId() : null
-        //Long sessionId = gameSession.getId();
-
-        ScoreDTO dto = new ScoreDTO();
-        dto.setPoints(score);
-        dto.setPlayerId(1L);
-        dto.setGameSessionId(1L);
-
-        //tady REST endpoints pouziju ScoreClient(REST api) svoje metody pro prenos na BE
-        gameSession.getScoreClient().create(dto, response ->{
-            showAlert("Score: " + score + " saved succesfully");
-        });
-    }
-*/
 
     @Override
     public void onScoreUpdate(int newScore) {
@@ -225,6 +204,10 @@ public class GameController implements GameStateObserver {
     @FXML
     private void displayHighScores() {
         scoreClient.getAll(list -> {
+
+            //seradim nejdriv
+            list.sort((a, b) -> Integer.compare(b.getPoints(), a.getPoints()));
+
             //jump back from http thread to JavaFX thred
             Platform.runLater(() -> {
                 if (list.isEmpty()){
@@ -263,16 +246,51 @@ public class GameController implements GameStateObserver {
         requestFocusToCanvas();
     }
 
+    @FXML
+    private void handleDeleteRandomScore() {
+        // Tohle je jen demo, vyamze proste prvni skore
+
+        scoreClient.getAll(scores -> {
+            if (!scores.isEmpty()) {
+                Long id = scores.get(0).getId(); // smaze prvni score
+                scoreClient.deleteScore(id, () -> {
+                    Platform.runLater(() -> showAlert("Score was deleted successfully!"));
+                }, ex -> {
+                    Platform.runLater(() -> showAlert("score deletion failed: " + ex.getMessage()));
+                });
+            }
+        });
+
+    }
+
+    @FXML
+    private void handleDeleteFirstScore() {
+        scoreClient.getAll(list -> {
+            // Seradit podle bodu sestupne, pak az smazu opravdu to prvni
+            list.sort((a, b) -> Integer.compare(b.getPoints(), a.getPoints()));
+
+            if (!list.isEmpty()) {
+                ScoreDTO topScore = list.get(0); // ted uz tohle je nejvyssi
+                Long id = topScore.getId();
+                scoreClient.deleteScore(id, () -> {
+                    Platform.runLater(() -> showAlert("Top Score was deleted successfully!"));
+                }, ex -> {
+                    Platform.runLater(() -> showAlert("deletion failed: " + ex.getMessage()));
+                });
+            } else {
+                Platform.runLater(() -> showAlert("no score to delete!"));
+            }
+        });
+    }
+
+
     private void requestFocusToCanvas() {
         if (scoreLabel.getScene() != null) {
             scoreLabel.getScene().getRoot().requestFocus();
         }
     }
 
-/*    private void saveCurrentScore() {
-        gameSession.getScoreClient().saveScore();
-        showAlert("Score saved successfully!");
-    }*/
+
 
     private void showAlert(String message) {
         Platform.runLater(() -> {
