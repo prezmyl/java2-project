@@ -100,8 +100,8 @@ public class GameController implements GameStateObserver {
 
         ScoreDTO dto = new ScoreDTO();
         dto.setPoints(score);
-        //dto.setPlayerId(playerId);
-        //dto.setGameSessionId(sessionId);
+        dto.setPlayerId(1L);
+        dto.setGameSessionId(1L);
 
         //tady REST endpoints pouziju ScoreClient(REST api) svoje metody pro prenos na BE
         gameSession.getScoreClient().create(dto, response ->{
