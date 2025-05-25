@@ -6,7 +6,7 @@ module cz.vsb.fei.project.game {
 
 
 	// Vlastní modul pro práci se soubory
-	requires cz.vsb.fei.project.storage;
+	//requires cz.vsb.fei.project.storage;
 	requires cz.vsb.fei.project.data;
     requires static lombok;
 	requires org.apache.logging.log4j;

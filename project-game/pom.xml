@@ -12,10 +12,10 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- Závislost na modulu project-file -->
+        <!-- Závislost na modulu project-data -->
         <dependency>
             <groupId>cz.vsb.fei</groupId>
-            <artifactId>project-storage</artifactId>
+            <artifactId>project-data</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
