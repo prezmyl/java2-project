@@ -20,25 +20,6 @@ public class PlayerClient {
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public void getAll(Consumer<List<PlayerDTO>> callback) {
-        HttpRequest req = HttpRequest.newBuilder()
-                .uri(URI.create(BACKEND_URL))
-                .GET()
-                .build();
-
-        client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .thenApply(json -> {
-                    try {
-                        return objectMapper.readValue(json, new TypeReference<List<PlayerDTO>>(){});
-                    } catch (Exception e) {
-                        log.error("Error while loading pLayers form the server", e);
-                        throw new CompletionException(e);
-                    }
-                })
-                .thenAccept(callback)
-                .exceptionally(ex -> { log.error("Error while loading pLayers form the server", ex); return null; });
-    }
 
     public void create(PlayerDTO p, Consumer<PlayerDTO> callback) {
         try {
@@ -68,9 +49,29 @@ public class PlayerClient {
             log.error("Error while creating player on the server", e);
         }
 
-
-
     }
+
+    public void getAll(Consumer<List<PlayerDTO>> callback) {
+        HttpRequest req = HttpRequest.newBuilder()
+                .uri(URI.create(BACKEND_URL))
+                .GET()
+                .build();
+
+        client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(json -> {
+                    try {
+                        return objectMapper.readValue(json, new TypeReference<List<PlayerDTO>>(){});
+                    } catch (Exception e) {
+                        log.error("Error while loading pLayers form the server", e);
+                        throw new CompletionException(e);
+                    }
+                })
+                .thenAccept(callback)
+                .exceptionally(ex -> { log.error("Error while loading pLayers form the server", ex); return null; });
+    }
+
+
 
 
     public void update(long id, PlayerDTO p, Runnable onSuccess) {

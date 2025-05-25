@@ -54,7 +54,7 @@ public class ScoreClient {
                             return objectMapper.readValue(body, ScoreDTO.class);
                         } catch (IOException e) {
                             log.error("Error while creating score on the server", e);
-                            throw new RuntimeException(e);
+                            throw new UncheckedIOException(e);
                         }
                     })
                     .thenAccept(callback)
@@ -86,85 +86,6 @@ public class ScoreClient {
                 .thenAccept(callback)
                 .exceptionally(ex -> { log.error("Error while loading score form the server", ex); return null; });
     }
-
-    public void saveScore(){
-        ScoreDTO scoreObj = new ScoreDTO();
-        try {
-            String json = objectMapper.writeValueAsString(scoreObj);
-
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(BACKEND_URL))
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(json))
-                    .build();
-
-            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                    .thenAccept(response -> log.info("Server response: {}", response.body()))
-                    .exceptionally(ex -> {
-                        log.error("Error while sending score to server. {}", ex.getMessage());
-                        return null;
-                    });
-        } catch (Exception e) {
-            log.error("Error while score JSON serialization ", e);
-        }
-    }
-
-    public void loadScores() {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(BACKEND_URL))
-                .GET()
-                .build();
-
-        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenAccept(response -> {
-                    try {
-                        List<ScoreDTO> scores = objectMapper.readValue(response.body(), new TypeReference<>() {
-                        });
-                        scores.forEach(sc -> log.info("{}: Score: {}", sc.getPlayerNickname(), sc.getPoints()));
-                    } catch (IOException e) {
-                        log.error("Error while loading scores from server", e);
-                    }
-                })
-                .exceptionally(ex -> {
-                    log.error("Error while loading scores from server", ex);
-                    return null;
-
-                });
-
-    }
-
-
-    public void getHighScores(Consumer<List<ScoreDTO>> callback) {
-        HttpRequest rq = HttpRequest.newBuilder()
-                .uri(URI.create(BACKEND_URL))
-                .GET()
-                .build();
-
-        client.sendAsync(rq, HttpResponse.BodyHandlers.ofString())
-                .thenAccept(rp -> {
-                    try {
-                        List<ScoreDTO> scores = objectMapper.readValue(rp.body(), new TypeReference<>() {
-                        });
-                        List<ScoreDTO> topScores = scores.stream()
-                                .sorted(Comparator.comparingInt(ScoreDTO::getPoints).reversed())
-                                .limit(10)
-                                .collect(Collectors.toList());
-
-                        callback.accept(topScores);
-
-                    } catch (IOException e) {
-                        log.error("Error while loading scores from server", e);
-                    }
-                })
-                .exceptionally(ex -> {
-                    log.error("Error while loading scores from server", ex);
-                    return null;
-                });
-    }
-
-
-
-
 
 
 

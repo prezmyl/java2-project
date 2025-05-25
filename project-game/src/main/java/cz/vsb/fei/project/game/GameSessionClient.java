@@ -19,29 +19,6 @@ public class GameSessionClient {
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-
-    public void getAll(Consumer<List<GameSessionDTO>> callback) {
-        HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL))
-                .GET()
-                .build();
-
-        client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .thenApply(json -> {
-                    try {
-                        return objectMapper.readValue(json, new TypeReference<List<GameSessionDTO>>() {});
-                    } catch (IOException e) {
-                        log.error("Error parsing GameSession list from server", e);
-                        throw new UncheckedIOException(e);
-                    }
-                })
-                .thenAccept(callback)
-                .exceptionally(ex -> {
-                    log.error("Error while loading game sessions from server", ex);
-                    return null;
-                });
-    }
-
     public void create(GameSessionDTO gs, Consumer<GameSessionDTO> callback) {
         try {
             String json = objectMapper.writeValueAsString(gs);
@@ -69,6 +46,30 @@ public class GameSessionClient {
             log.error("Error serializing GameSession to JSON", e);
         }
     }
+
+    public void getAll(Consumer<List<GameSessionDTO>> callback) {
+        HttpRequest req = HttpRequest.newBuilder(URI.create(BACKEND_URL))
+                .GET()
+                .build();
+
+        client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(json -> {
+                    try {
+                        return objectMapper.readValue(json, new TypeReference<List<GameSessionDTO>>() {});
+                    } catch (IOException e) {
+                        log.error("Error parsing GameSession list from server", e);
+                        throw new UncheckedIOException(e);
+                    }
+                })
+                .thenAccept(callback)
+                .exceptionally(ex -> {
+                    log.error("Error while loading game sessions from server", ex);
+                    return null;
+                });
+    }
+
+
 
     public void update(long id, GameSessionDTO gs, Consumer<GameSessionDTO> callback) {
         try {
